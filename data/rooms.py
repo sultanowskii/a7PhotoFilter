@@ -4,7 +4,7 @@ from sqlalchemy import orm, Column
 from sqlalchemy_serializer import SerializerMixin
 
 
-class Room(SqlAlchemyBase):
+class Room(SqlAlchemyBase, SerializerMixin):
     __tablename__ = 'rooms'
 
     id = Column(sqlalchemy.Integer,

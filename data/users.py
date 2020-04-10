@@ -4,7 +4,7 @@ from sqlalchemy import orm, Column
 from sqlalchemy_serializer import SerializerMixin
 
 
-class User(SqlAlchemyBase):
+class User(SqlAlchemyBase, SerializerMixin):
     __tablename__ = 'users'
 
     id = Column(sqlalchemy.Integer,

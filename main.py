@@ -1,8 +1,7 @@
-import random
-
 from telegram.ext import Updater, MessageHandler, Filters
 from telegram.ext import CallbackContext, CommandHandler
-from telegram.ext import CommandHandler
+
+from requests import request
 
 from data import db_session
 from data.users import User
@@ -29,8 +28,6 @@ def main():
 
     dp = updater.dispatcher
     text_handler = MessageHandler(Filters.text, echo)
-
-    db_session.global_init("db/filter_bot.sqlite")
 
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", help))
