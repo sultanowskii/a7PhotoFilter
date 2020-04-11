@@ -11,7 +11,6 @@ class Image(SqlAlchemyBase, SerializerMixin):
                            primary_key=True, autoincrement=True)
     room_id = Column(sqlalchemy.Integer, sqlalchemy.ForeignKey("rooms.id"), default=0)  # у тех картинок, у которых нету
     # их комнаты, присваиваются 0 комнате - служебной
-
     # после загрузки картинки юзером для обработки, мы сразу создаем ему Image
     room = orm.relation('Room')  # связь с Room многие к одному
     name = Column(sqlalchemy.String)

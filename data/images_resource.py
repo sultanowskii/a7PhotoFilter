@@ -1,27 +1,27 @@
 from . import db_session
 from .images import Image
-from flask import jsonify
-from flask_restful import abort, Resource
+from flask import jsonify, request
+from flask_restful import Resource
 from . import images_parser
-from . import editor_parser
 from werkzeug import exceptions
 from data import filters
 from datetime import datetime
 
-parser = images_parser.parser
+images_parser = images_parser.parser
 
 # Целиком доработай image, чтобы везде нормально работали файлы
+# Нуждается в полной доработке
 
 
 class ImagesResource(Resource):
     def get(self, image_id):
-        args = editor_parser.parser.parse_args()
+        args = request.args
         session = db_session.create_session()
         image = session.query(Image).get(image_id)  # image должен быть файлом
         if not image:
             raise exceptions.NotFound
-        if args['action'] == 'applyfilter' and args['fid'] != 0:
-            image = filters.add_filter('файл картинки', args['fid'])
+        if args.get('action') == 'applyfilter' and args.get('fid', None):
+            image = filters.add_filter('файл картинки', request.args['fid'])
         return jsonify({'Image': image.to_dict(
             only=('id', 'name'))})
 
@@ -43,7 +43,7 @@ class ImagesListResource(Resource):
             only=('id', 'image')) for item in images]})
 
     def post(self):
-        args = images_parser.parser.parse_args()
+        args = images_parser.parse_args()
         #  здесь создаем файл с картинкой
         session = db_session.create_session()
         if not args['name']:
