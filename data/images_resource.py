@@ -1,5 +1,6 @@
 from . import db_session
 from .images import Image
+from .rooms import Room
 from flask import jsonify, request
 from flask_restful import Resource
 from . import images_parser
@@ -34,6 +35,28 @@ class ImagesResource(Resource):
         session.commit()
         return jsonify({'success': 'OK'})
 
+    def put(self, image_id):
+        session = db_session.create_session()
+        image = session.query(Image).get(image_id)
+        if not image:
+            raise exceptions.NotFound
+        args = images_parser.parse_args()
+        if args.get('name'):
+            image.name = args.get('name')
+        if args.get('room_id'):
+            room = session.query(Room).filter(Room.id == args.get('room_id')).first()
+            if room:
+                if args.get('remove_room') == True:
+                    image.room = None
+                    image.room_id = None
+                else:
+                    image.room = room
+                    image.room_id = room.id
+            else:
+                raise exceptions.NotFound
+        session.commit()
+        return jsonify({'success': 'OK'})
+
 
 class ImagesListResource(Resource):
     def get(self):
@@ -48,7 +71,7 @@ class ImagesListResource(Resource):
         session = db_session.create_session()
         if not args['name']:
             args['name'] = datetime.now().strftime('%H%M%S-%d%m%Y')  # генерируем имя с помощью текущего врмени и даты
-        image = Image(name=args['name'])
+        image = Image(name=args.get('name'))
         session.add(image)
         session.commit()
         return jsonify({'success': 'OK'})

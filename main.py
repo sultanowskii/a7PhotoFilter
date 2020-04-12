@@ -24,7 +24,7 @@ def echo(update, context):
 
 
 def main():
-    updater = Updater('1262910482:AAETAdpsRrLTcNwC-cjA7Yyxhg8ZaBdvn4A', use_context=True)
+    updater = Updater('', use_context=True)
 
     dp = updater.dispatcher
     text_handler = MessageHandler(Filters.text, echo)
