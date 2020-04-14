@@ -2,7 +2,7 @@ from .rooms import Room
 from .users import User
 from . import db_session
 from . import rooms_parser
-from .. import config
+import config
 
 from flask import jsonify
 from flask_restful import Resource
