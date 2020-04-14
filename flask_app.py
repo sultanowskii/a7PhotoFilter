@@ -2,25 +2,24 @@ from random import randint
 
 from flask_restful import Api
 from flask import Flask
+from flask import make_response
+from flask import jsonify
 
 from data.images import Image
-
 from data.rooms import Room
 from data.users import User
 from data import users_resource
 from data import images_resource
 from data import rooms_resource
-
-
 from data import db_session
 from data.key_generator import generate_key
-from flask import make_response
-from flask import jsonify
+import config
+
 from werkzeug import exceptions
 
 app = Flask(__name__)
 api = Api(app)
-app.config['SECRET_KEY'] = generate_key(randint(6, 12))
+app.config['SECRET_KEY'] = config.key
 
 
 def main():

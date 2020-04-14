@@ -1,9 +1,11 @@
-from . import db_session
-from .users import User
 from .rooms import Room
+from .users import User
+from . import db_session
+from . import rooms_parser
+from .. import config
+
 from flask import jsonify
 from flask_restful import Resource
-from . import rooms_parser
 from werkzeug import exceptions
 
 parser = rooms_parser.parser
@@ -43,7 +45,13 @@ class RoomsResource(Resource):
                     else:
                         raise exceptions.NotFound
                 else:
-                    room.users.append(user)
+                    if len(room.users) < config.room_user_limit:
+                        if len(user.rooms) < config.user_room_limit:
+                            room.users.append(user)
+                        else:
+                            raise exceptions.Forbidden  # временно
+                    else:
+                        raise exceptions.Forbidden  # временно
             else:
                 raise exceptions.NotFound
         session.commit()

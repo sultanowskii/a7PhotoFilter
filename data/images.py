@@ -2,6 +2,7 @@ import sqlalchemy
 from .db_session import SqlAlchemyBase
 from sqlalchemy import orm, Column
 from sqlalchemy_serializer import SerializerMixin
+from datetime import datetime
 
 
 class Image(SqlAlchemyBase, SerializerMixin):
@@ -14,3 +15,8 @@ class Image(SqlAlchemyBase, SerializerMixin):
     # после загрузки картинки юзером для обработки, мы сразу создаем ему Image
     room = orm.relation('Room')  # связь с Room многие к одному
     name = Column(sqlalchemy.String)
+    path = Column(sqlalchemy.String)
+
+    def generate_path(self):
+        now = datetime.now().strftime('%H%M%S-%d%m%Y')
+        self.path = f'static/img/{self.name}{now}'

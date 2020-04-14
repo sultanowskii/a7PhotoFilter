@@ -2,11 +2,13 @@ from telegram.ext import Updater, MessageHandler, Filters
 from telegram.ext import CallbackContext, CommandHandler
 
 from requests import request
+import base64
 
 from data import db_session
 from data.users import User
 from data.images import Image
 from data.rooms import Room
+import config
 
 
 def start(update, context):
@@ -24,7 +26,7 @@ def echo(update, context):
 
 
 def main():
-    updater = Updater('', use_context=True)
+    updater = Updater(config.token, use_context=True)
 
     dp = updater.dispatcher
     text_handler = MessageHandler(Filters.text, echo)
