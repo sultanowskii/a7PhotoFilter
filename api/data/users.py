@@ -2,6 +2,7 @@ import sqlalchemy
 from .db_session import SqlAlchemyBase
 from sqlalchemy import orm, Column
 from sqlalchemy_serializer import SerializerMixin
+from datetime import datetime
 
 
 association_table = sqlalchemy.Table('users-rooms', SqlAlchemyBase.metadata,
@@ -17,7 +18,7 @@ class User(SqlAlchemyBase, SerializerMixin):
     id = Column(sqlalchemy.Integer,
                            primary_key=True, autoincrement=True)
     name = Column(sqlalchemy.String)
-    rooms_count = Column(sqlalchemy.Integer)  # кол-во комнат у юзера (для ограничителей)
+    lastname = Column(sqlalchemy.String)
     # Здесь мы соединяем rooms и users с помощью вспомогательной таблицы
     rooms = orm.relation('Room',
                               secondary=association_table,

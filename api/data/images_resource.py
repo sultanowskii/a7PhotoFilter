@@ -3,14 +3,13 @@ from .rooms import Room
 from . import db_session
 from . import filters
 from . import images_parser
-import config
+from .. import config
 
 from flask import jsonify, request
 from flask_restful import Resource
 from werkzeug import exceptions
 
 import base64
-from datetime import datetime
 from io import BytesIO
 from PIL import Image as PilImage
 
@@ -22,15 +21,19 @@ class ImagesResource(Resource):
         args = request.args
         session = db_session.create_session()
         image = session.query(Image).get(image_id)  # image должен быть файлом
+        name = image.name
+        iid = image.id
         if not image:
             raise exceptions.NotFound
         if args.get('action') == 'applyfilter' and args.get('fid', None):
-            image = filters.add_filter(image, request.args['fid'])
+            res_image = filters.add_filter(image, request.args['fid'])
+        else:
+            res_image = PilImage.open(image.path)
         buf = BytesIO()
-        image.save(buf, format='JPEG')
+        res_image.save(buf, format='JPEG')
         byte_im = buf.getvalue()
         string_data = base64.b64encode(byte_im).decode('utf-8')
-        return jsonify({'Image': string_data})
+        return jsonify({'Image': {'id': iid, 'data': string_data, 'name': name}})
 
     def delete(self, image_id):
         session = db_session.create_session()
@@ -60,7 +63,7 @@ class ImagesResource(Resource):
                     image.room_id = None
                     room.image_count -= 1
                 else:
-                    if room.image_count < config.room_image_limit:
+                    if room.image_count < config.ROOM_IMAGE_LIMIT:
                         image.room_id = room.id
                         image.room = room
                         room.image_count += 1
@@ -76,8 +79,8 @@ class ImagesListResource(Resource):
     def get(self):
         session = db_session.create_session()
         images = session.query(Image).all()
-        return jsonify({'Images': [item.to_dict(
-            only=('id', 'image')) for item in images]})
+        return jsonify({'images': [item.to_dict(
+            only=('id', 'name')) for item in images]})
 
     def post(self):
         args = images_parser.parse_args()
@@ -87,7 +90,7 @@ class ImagesListResource(Resource):
         if args.get('room_id'):
             room = session.query(Room).filter(Room.id == args.get('room_id')).first()
             if room:
-                if room.image_count < config.room_image_limit:
+                if room.image_count < config.ROOM_IMAGE_LIMIT:
                     image.room_id = room.id
                     image.room = room
                     room.image_count += 1

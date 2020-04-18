@@ -1,0 +1,1506 @@
+2020-04-18 16:28:05,136 ERROR root During /rooms API's sent error: None
+2020-04-18 16:29:33,390 ERROR root During /rooms API's sent error: None
+2020-04-18 16:31:05,049 ERROR root During /rooms API's sent error: None
+2020-04-18 16:31:42,865 ERROR root During /rooms API's sent error: None
+2020-04-18 16:33:22,097 ERROR root During /rooms API's sent error: None
+2020-04-18 16:34:11,603 ERROR root During /rooms API's sent error: None
+2020-04-18 16:34:57,785 ERROR root During /rooms API's sent error: None
+2020-04-18 16:36:03,373 ERROR root During /rooms API's sent error: None
+2020-04-18 16:37:26,595 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\dispatcher.py", line 390, in process_update
+    handler.handle_update(update, self, check, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\conversationhandler.py", line 462, in handle_update
+    new_state = handler.handle_update(update, dispatcher, check_result, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\handler.py", line 117, in handle_update
+    return self.callback(update, context)
+  File "C:/Users/Coding/PycharmProjects/a7PhotoFilter/bot/main.py", line 156, in add_user_to_room
+    id, name = update.message.text.split('*')
+ValueError: not enough values to unpack (expected 2, got 1)
+2020-04-18 16:37:43,202 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\dispatcher.py", line 390, in process_update
+    handler.handle_update(update, self, check, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\conversationhandler.py", line 462, in handle_update
+    new_state = handler.handle_update(update, dispatcher, check_result, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\handler.py", line 117, in handle_update
+    return self.callback(update, context)
+  File "C:/Users/Coding/PycharmProjects/a7PhotoFilter/bot/main.py", line 156, in add_user_to_room
+    id, name = update.message.text.split('*')
+ValueError: not enough values to unpack (expected 2, got 1)
+2020-04-18 16:38:04,535 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\dispatcher.py", line 390, in process_update
+    handler.handle_update(update, self, check, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\conversationhandler.py", line 462, in handle_update
+    new_state = handler.handle_update(update, dispatcher, check_result, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\handler.py", line 117, in handle_update
+    return self.callback(update, context)
+  File "C:/Users/Coding/PycharmProjects/a7PhotoFilter/bot/main.py", line 156, in add_user_to_room
+    id, name = update.message.text.split('*')
+ValueError: not enough values to unpack (expected 2, got 1)
+2020-04-18 16:38:06,695 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\dispatcher.py", line 390, in process_update
+    handler.handle_update(update, self, check, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\conversationhandler.py", line 462, in handle_update
+    new_state = handler.handle_update(update, dispatcher, check_result, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\handler.py", line 117, in handle_update
+    return self.callback(update, context)
+  File "C:/Users/Coding/PycharmProjects/a7PhotoFilter/bot/main.py", line 156, in add_user_to_room
+    id, name = update.message.text.split('*')
+ValueError: not enough values to unpack (expected 2, got 1)
+2020-04-18 16:38:11,697 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\dispatcher.py", line 390, in process_update
+    handler.handle_update(update, self, check, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\conversationhandler.py", line 462, in handle_update
+    new_state = handler.handle_update(update, dispatcher, check_result, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\handler.py", line 117, in handle_update
+    return self.callback(update, context)
+  File "C:/Users/Coding/PycharmProjects/a7PhotoFilter/bot/main.py", line 156, in add_user_to_room
+    id, name = update.message.text.split('*')
+ValueError: not enough values to unpack (expected 2, got 1)
+2020-04-18 16:38:14,572 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\dispatcher.py", line 390, in process_update
+    handler.handle_update(update, self, check, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\conversationhandler.py", line 462, in handle_update
+    new_state = handler.handle_update(update, dispatcher, check_result, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\handler.py", line 117, in handle_update
+    return self.callback(update, context)
+  File "C:/Users/Coding/PycharmProjects/a7PhotoFilter/bot/main.py", line 156, in add_user_to_room
+    id, name = update.message.text.split('*')
+ValueError: not enough values to unpack (expected 2, got 1)
+2020-04-18 16:38:40,103 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\dispatcher.py", line 390, in process_update
+    handler.handle_update(update, self, check, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\conversationhandler.py", line 462, in handle_update
+    new_state = handler.handle_update(update, dispatcher, check_result, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\handler.py", line 117, in handle_update
+    return self.callback(update, context)
+  File "C:/Users/Coding/PycharmProjects/a7PhotoFilter/bot/main.py", line 156, in add_user_to_room
+    id, name = update.message.text.split('*')
+ValueError: not enough values to unpack (expected 2, got 1)
+2020-04-18 16:39:18,208 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\dispatcher.py", line 390, in process_update
+    handler.handle_update(update, self, check, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\conversationhandler.py", line 462, in handle_update
+    new_state = handler.handle_update(update, dispatcher, check_result, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\handler.py", line 117, in handle_update
+    return self.callback(update, context)
+  File "C:/Users/Coding/PycharmProjects/a7PhotoFilter/bot/main.py", line 156, in add_user_to_room
+    id, name = update.message.text.split('*')
+ValueError: not enough values to unpack (expected 2, got 1)
+2020-04-18 16:41:12,991 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\dispatcher.py", line 390, in process_update
+    handler.handle_update(update, self, check, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\conversationhandler.py", line 462, in handle_update
+    new_state = handler.handle_update(update, dispatcher, check_result, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\handler.py", line 117, in handle_update
+    return self.callback(update, context)
+  File "C:/Users/Coding/PycharmProjects/a7PhotoFilter/bot/main.py", line 205, in delete_room
+    rid = current_rooms[userid][current_room[userid]]['Room']['id']
+KeyError: 'id'
+2020-04-18 16:41:28,677 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\dispatcher.py", line 390, in process_update
+    handler.handle_update(update, self, check, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\conversationhandler.py", line 462, in handle_update
+    new_state = handler.handle_update(update, dispatcher, check_result, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\handler.py", line 117, in handle_update
+    return self.callback(update, context)
+  File "C:/Users/Coding/PycharmProjects/a7PhotoFilter/bot/main.py", line 205, in delete_room
+    rid = current_rooms[userid][current_room[userid]]['Room']['id']
+KeyError: 'id'
+2020-04-18 16:41:31,222 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\dispatcher.py", line 390, in process_update
+    handler.handle_update(update, self, check, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\conversationhandler.py", line 462, in handle_update
+    new_state = handler.handle_update(update, dispatcher, check_result, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\handler.py", line 117, in handle_update
+    return self.callback(update, context)
+  File "C:/Users/Coding/PycharmProjects/a7PhotoFilter/bot/main.py", line 205, in delete_room
+    rid = current_rooms[userid][current_room[userid]]['Room']['id']
+KeyError: 'id'
+2020-04-18 16:43:14,880 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\dispatcher.py", line 390, in process_update
+    handler.handle_update(update, self, check, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\conversationhandler.py", line 462, in handle_update
+    new_state = handler.handle_update(update, dispatcher, check_result, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\handler.py", line 117, in handle_update
+    return self.callback(update, context)
+  File "C:/Users/Coding/PycharmProjects/a7PhotoFilter/bot/main.py", line 207, in delete_room
+    rid = current_rooms[userid][current_room[userid]]['Room']['id']
+KeyError: 'id'
+2020-04-18 16:44:25,133 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\dispatcher.py", line 390, in process_update
+    handler.handle_update(update, self, check, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\conversationhandler.py", line 462, in handle_update
+    new_state = handler.handle_update(update, dispatcher, check_result, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\handler.py", line 117, in handle_update
+    return self.callback(update, context)
+  File "C:/Users/Coding/PycharmProjects/a7PhotoFilter/bot/main.py", line 207, in delete_room
+    rid = current_rooms[userid][current_room[userid]]['Room']['id']
+KeyError: 'id'
+2020-04-18 16:45:21,802 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\dispatcher.py", line 390, in process_update
+    handler.handle_update(update, self, check, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\conversationhandler.py", line 462, in handle_update
+    new_state = handler.handle_update(update, dispatcher, check_result, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\handler.py", line 117, in handle_update
+    return self.callback(update, context)
+  File "C:/Users/Coding/PycharmProjects/a7PhotoFilter/bot/main.py", line 208, in delete_room
+    rid = current_rooms[userid][current_room[userid]]['Room']['id']
+KeyError: 'id'
+2020-04-18 16:47:21,435 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\dispatcher.py", line 390, in process_update
+    handler.handle_update(update, self, check, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\conversationhandler.py", line 462, in handle_update
+    new_state = handler.handle_update(update, dispatcher, check_result, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\handler.py", line 117, in handle_update
+    return self.callback(update, context)
+  File "C:/Users/Coding/PycharmProjects/a7PhotoFilter/bot/main.py", line 208, in delete_room
+    rid = current_rooms[userid][current_room[userid]]['Room']['id']
+KeyError: 'id'
+2020-04-18 16:55:13,980 ERROR root During /rooms API's sent error: None
+2020-04-18 16:56:51,363 ERROR root During /rooms API's sent error: Not found
+2020-04-18 16:57:45,960 ERROR root During /rooms API's sent error: None
+2020-04-18 17:21:12,371 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\dispatcher.py", line 390, in process_update
+    handler.handle_update(update, self, check, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\conversationhandler.py", line 462, in handle_update
+    new_state = handler.handle_update(update, dispatcher, check_result, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\handler.py", line 117, in handle_update
+    return self.callback(update, context)
+  File "C:/Users/Coding/PycharmProjects/a7PhotoFilter/bot/main.py", line 83, in rooms
+    rooms = user['User'].get('rooms')
+KeyError: 'User'
+2020-04-18 17:23:01,252 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\dispatcher.py", line 390, in process_update
+    handler.handle_update(update, self, check, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\conversationhandler.py", line 462, in handle_update
+    new_state = handler.handle_update(update, dispatcher, check_result, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\handler.py", line 117, in handle_update
+    return self.callback(update, context)
+  File "C:/Users/Coding/PycharmProjects/a7PhotoFilter/bot/main.py", line 83, in rooms
+    rooms = user['User'].get('rooms')
+KeyError: 'User'
+2020-04-18 17:27:32,950 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\dispatcher.py", line 390, in process_update
+    handler.handle_update(update, self, check, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\conversationhandler.py", line 462, in handle_update
+    new_state = handler.handle_update(update, dispatcher, check_result, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\handler.py", line 117, in handle_update
+    return self.callback(update, context)
+  File "C:/Users/Coding/PycharmProjects/a7PhotoFilter/bot/main.py", line 155, in room
+    text += f" <b>{i + 1}</b>: " + image['Image'].get('name') + '\n'
+KeyError: 'Image'
+2020-04-18 17:40:30,321 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\dispatcher.py", line 390, in process_update
+    handler.handle_update(update, self, check, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\conversationhandler.py", line 462, in handle_update
+    new_state = handler.handle_update(update, dispatcher, check_result, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\handler.py", line 117, in handle_update
+    return self.callback(update, context)
+  File "C:/Users/Coding/PycharmProjects/a7PhotoFilter/bot/main.py", line 155, in room
+    text += f" <b>{i + 1}</b>: " + image['Image'].get('name') + '\n'
+KeyError: 'Image'
+2020-04-18 17:42:18,705 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\dispatcher.py", line 390, in process_update
+    handler.handle_update(update, self, check, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\conversationhandler.py", line 462, in handle_update
+    new_state = handler.handle_update(update, dispatcher, check_result, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\handler.py", line 117, in handle_update
+    return self.callback(update, context)
+  File "C:/Users/Coding/PycharmProjects/a7PhotoFilter/bot/main.py", line 233, in image
+    image = current_images[current_image].get('Image').get('data')
+TypeError: unhashable type: 'dict'
+2020-04-18 17:44:50,042 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x00000260D766AB70>, 'Connection to api.telegram.org timed out. (connect timeout=5.0)')': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 17:44:55,046 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x00000260D766A438>, 'Connection to api.telegram.org timed out. (connect timeout=5.0)')': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 17:45:00,050 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x00000260D766A2E8>, 'Connection to api.telegram.org timed out. (connect timeout=5.0)')': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 17:45:05,053 ERROR telegram.ext.updater Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x00000260D766ADA0>, 'Connection to api.telegram.org timed out. (connect timeout=5.0)'))
+2020-04-18 17:45:05,054 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 617, in urlopen
+    chunked=chunked)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 360, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 857, in _validate_conn
+    super(HTTPSConnectionPool, self)._validate_conn(conn)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 289, in _validate_conn
+    conn.connect()
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 146, in _new_conn
+    (self.host, self.timeout))
+telegram.vendor.ptb_urllib3.urllib3.exceptions.ConnectTimeoutError: (<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x00000260D766ADA0>, 'Connection to api.telegram.org timed out. (connect timeout=5.0)')
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 225, in _request_wrapper
+    resp = self._con_pool.request(*args, **kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\request.py", line 70, in request
+    **urlopen_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\request.py", line 148, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\poolmanager.py", line 244, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 666, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\retry.py", line 376, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+telegram.vendor.ptb_urllib3.urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x00000260D766ADA0>, 'Connection to api.telegram.org timed out. (connect timeout=5.0)'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\updater.py", line 380, in _network_loop_retry
+    if not action_cb():
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\updater.py", line 341, in polling_action_cb
+    allowed_updates=allowed_updates)
+  File "<decorator-gen-31>", line 2, in get_updates
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\bot.py", line 67, in decorator
+    result = func(*args, **kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\bot.py", line 2097, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 334, in post
+    **urlopen_kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 231, in _request_wrapper
+    raise NetworkError('urllib3 HTTPError {0}'.format(error))
+telegram.error.NetworkError: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x00000260D766ADA0>, 'Connection to api.telegram.org timed out. (connect timeout=5.0)'))
+2020-04-18 17:55:19,508 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\dispatcher.py", line 390, in process_update
+    handler.handle_update(update, self, check, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\conversationhandler.py", line 462, in handle_update
+    new_state = handler.handle_update(update, dispatcher, check_result, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\handler.py", line 117, in handle_update
+    return self.callback(update, context)
+  File "C:/Users/Coding/PycharmProjects/a7PhotoFilter/bot/main.py", line 156, in room
+    current_images[update.message.chat_id].append(image)
+KeyError: 459872289
+2020-04-18 17:55:44,054 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\dispatcher.py", line 390, in process_update
+    handler.handle_update(update, self, check, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\conversationhandler.py", line 462, in handle_update
+    new_state = handler.handle_update(update, dispatcher, check_result, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\handler.py", line 117, in handle_update
+    return self.callback(update, context)
+  File "C:/Users/Coding/PycharmProjects/a7PhotoFilter/bot/main.py", line 156, in room
+    current_images[update.message.chat_id].append(image)
+KeyError: 459872289
+2020-04-18 18:11:38,498 ERROR telegram.ext.updater Error while getting Updates: urllib3 HTTPError ('Connection aborted.', ConnectionResetError(10054, 'Удаленный хост принудительно разорвал существующее подключение', None, 10054, None))
+2020-04-18 18:11:38,510 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 617, in urlopen
+    chunked=chunked)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 402, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 2, in raise_from
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 398, in _make_request
+    httplib_response = conn.getresponse()
+  File "C:\Users\Coding\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1331, in getresponse
+    response.begin()
+  File "C:\Users\Coding\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 297, in begin
+    version, status, reason = self._read_status()
+  File "C:\Users\Coding\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 258, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "C:\Users\Coding\AppData\Local\Programs\Python\Python36\lib\socket.py", line 586, in readinto
+    return self._sock.recv_into(b)
+  File "C:\Users\Coding\AppData\Local\Programs\Python\Python36\lib\ssl.py", line 1002, in recv_into
+    return self.read(nbytes, buffer)
+  File "C:\Users\Coding\AppData\Local\Programs\Python\Python36\lib\ssl.py", line 865, in read
+    return self._sslobj.read(len, buffer)
+  File "C:\Users\Coding\AppData\Local\Programs\Python\Python36\lib\ssl.py", line 625, in read
+    v = self._sslobj.read(len, buffer)
+ConnectionResetError: [WinError 10054] Удаленный хост принудительно разорвал существующее подключение
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 225, in _request_wrapper
+    resp = self._con_pool.request(*args, **kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\request.py", line 70, in request
+    **urlopen_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\request.py", line 148, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\poolmanager.py", line 244, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 666, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\retry.py", line 347, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\packages\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 617, in urlopen
+    chunked=chunked)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 402, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 2, in raise_from
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 398, in _make_request
+    httplib_response = conn.getresponse()
+  File "C:\Users\Coding\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1331, in getresponse
+    response.begin()
+  File "C:\Users\Coding\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 297, in begin
+    version, status, reason = self._read_status()
+  File "C:\Users\Coding\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 258, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "C:\Users\Coding\AppData\Local\Programs\Python\Python36\lib\socket.py", line 586, in readinto
+    return self._sock.recv_into(b)
+  File "C:\Users\Coding\AppData\Local\Programs\Python\Python36\lib\ssl.py", line 1002, in recv_into
+    return self.read(nbytes, buffer)
+  File "C:\Users\Coding\AppData\Local\Programs\Python\Python36\lib\ssl.py", line 865, in read
+    return self._sslobj.read(len, buffer)
+  File "C:\Users\Coding\AppData\Local\Programs\Python\Python36\lib\ssl.py", line 625, in read
+    v = self._sslobj.read(len, buffer)
+telegram.vendor.ptb_urllib3.urllib3.exceptions.ProtocolError: ('Connection aborted.', ConnectionResetError(10054, 'Удаленный хост принудительно разорвал существующее подключение', None, 10054, None))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\updater.py", line 380, in _network_loop_retry
+    if not action_cb():
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\updater.py", line 341, in polling_action_cb
+    allowed_updates=allowed_updates)
+  File "<decorator-gen-31>", line 2, in get_updates
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\bot.py", line 67, in decorator
+    result = func(*args, **kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\bot.py", line 2097, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 334, in post
+    **urlopen_kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 231, in _request_wrapper
+    raise NetworkError('urllib3 HTTPError {0}'.format(error))
+telegram.error.NetworkError: urllib3 HTTPError ('Connection aborted.', ConnectionResetError(10054, 'Удаленный хост принудительно разорвал существующее подключение', None, 10054, None))
+2020-04-18 18:27:12,903 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546477978>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed',)': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 18:27:13,954 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546477860>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',)': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 18:27:13,996 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546506A90>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',)': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 18:27:14,001 ERROR telegram.ext.updater Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546506B70>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',))
+2020-04-18 18:27:14,002 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+OSError: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 617, in urlopen
+    chunked=chunked)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 360, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 857, in _validate_conn
+    super(HTTPSConnectionPool, self)._validate_conn(conn)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 289, in _validate_conn
+    conn.connect()
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+telegram.vendor.ptb_urllib3.urllib3.exceptions.NewConnectionError: <telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546506B70>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 225, in _request_wrapper
+    resp = self._con_pool.request(*args, **kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\request.py", line 70, in request
+    **urlopen_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\request.py", line 148, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\poolmanager.py", line 244, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 666, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\retry.py", line 376, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+telegram.vendor.ptb_urllib3.urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546506B70>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\updater.py", line 380, in _network_loop_retry
+    if not action_cb():
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\updater.py", line 341, in polling_action_cb
+    allowed_updates=allowed_updates)
+  File "<decorator-gen-31>", line 2, in get_updates
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\bot.py", line 67, in decorator
+    result = func(*args, **kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\bot.py", line 2097, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 334, in post
+    **urlopen_kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 231, in _request_wrapper
+    raise NetworkError('urllib3 HTTPError {0}'.format(error))
+telegram.error.NetworkError: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546506B70>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',))
+2020-04-18 18:27:15,509 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546506D30>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',)': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 18:27:15,512 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546506F60>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',)': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 18:27:15,520 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546408C50>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',)': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 18:27:15,525 ERROR telegram.ext.updater Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546408BA8>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',))
+2020-04-18 18:27:15,526 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+OSError: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 617, in urlopen
+    chunked=chunked)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 360, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 857, in _validate_conn
+    super(HTTPSConnectionPool, self)._validate_conn(conn)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 289, in _validate_conn
+    conn.connect()
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+telegram.vendor.ptb_urllib3.urllib3.exceptions.NewConnectionError: <telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546408BA8>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 225, in _request_wrapper
+    resp = self._con_pool.request(*args, **kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\request.py", line 70, in request
+    **urlopen_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\request.py", line 148, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\poolmanager.py", line 244, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 666, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\retry.py", line 376, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+telegram.vendor.ptb_urllib3.urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546408BA8>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\updater.py", line 380, in _network_loop_retry
+    if not action_cb():
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\updater.py", line 341, in polling_action_cb
+    allowed_updates=allowed_updates)
+  File "<decorator-gen-31>", line 2, in get_updates
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\bot.py", line 67, in decorator
+    result = func(*args, **kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\bot.py", line 2097, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 334, in post
+    **urlopen_kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 231, in _request_wrapper
+    raise NetworkError('urllib3 HTTPError {0}'.format(error))
+telegram.error.NetworkError: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546408BA8>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',))
+2020-04-18 18:27:17,895 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x00000225464089E8>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',)': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 18:27:17,899 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546408B70>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',)': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 18:27:17,902 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546477208>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',)': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 18:27:17,906 ERROR telegram.ext.updater Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546477438>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',))
+2020-04-18 18:27:17,907 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+OSError: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 617, in urlopen
+    chunked=chunked)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 360, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 857, in _validate_conn
+    super(HTTPSConnectionPool, self)._validate_conn(conn)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 289, in _validate_conn
+    conn.connect()
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+telegram.vendor.ptb_urllib3.urllib3.exceptions.NewConnectionError: <telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546477438>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 225, in _request_wrapper
+    resp = self._con_pool.request(*args, **kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\request.py", line 70, in request
+    **urlopen_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\request.py", line 148, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\poolmanager.py", line 244, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 666, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\retry.py", line 376, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+telegram.vendor.ptb_urllib3.urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546477438>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\updater.py", line 380, in _network_loop_retry
+    if not action_cb():
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\updater.py", line 341, in polling_action_cb
+    allowed_updates=allowed_updates)
+  File "<decorator-gen-31>", line 2, in get_updates
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\bot.py", line 67, in decorator
+    result = func(*args, **kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\bot.py", line 2097, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 334, in post
+    **urlopen_kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 231, in _request_wrapper
+    raise NetworkError('urllib3 HTTPError {0}'.format(error))
+telegram.error.NetworkError: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546477438>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',))
+2020-04-18 18:27:21,290 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546477278>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',)': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 18:27:21,293 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546477518>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',)': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 18:27:21,296 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546431198>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',)': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 18:27:21,299 ERROR telegram.ext.updater Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546431F28>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',))
+2020-04-18 18:27:21,300 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+OSError: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 617, in urlopen
+    chunked=chunked)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 360, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 857, in _validate_conn
+    super(HTTPSConnectionPool, self)._validate_conn(conn)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 289, in _validate_conn
+    conn.connect()
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+telegram.vendor.ptb_urllib3.urllib3.exceptions.NewConnectionError: <telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546431F28>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 225, in _request_wrapper
+    resp = self._con_pool.request(*args, **kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\request.py", line 70, in request
+    **urlopen_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\request.py", line 148, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\poolmanager.py", line 244, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 666, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\retry.py", line 376, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+telegram.vendor.ptb_urllib3.urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546431F28>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\updater.py", line 380, in _network_loop_retry
+    if not action_cb():
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\updater.py", line 341, in polling_action_cb
+    allowed_updates=allowed_updates)
+  File "<decorator-gen-31>", line 2, in get_updates
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\bot.py", line 67, in decorator
+    result = func(*args, **kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\bot.py", line 2097, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 334, in post
+    **urlopen_kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 231, in _request_wrapper
+    raise NetworkError('urllib3 HTTPError {0}'.format(error))
+telegram.error.NetworkError: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546431F28>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',))
+2020-04-18 18:27:31,368 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546431CC0>, 'Connection to api.telegram.org timed out. (connect timeout=5.0)')': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 18:27:31,372 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x00000225464312E8>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',)': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 18:27:31,376 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546431390>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',)': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 18:27:31,379 ERROR telegram.ext.updater Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x000002254645A898>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',))
+2020-04-18 18:27:31,380 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+OSError: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 617, in urlopen
+    chunked=chunked)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 360, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 857, in _validate_conn
+    super(HTTPSConnectionPool, self)._validate_conn(conn)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 289, in _validate_conn
+    conn.connect()
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+telegram.vendor.ptb_urllib3.urllib3.exceptions.NewConnectionError: <telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x000002254645A898>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 225, in _request_wrapper
+    resp = self._con_pool.request(*args, **kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\request.py", line 70, in request
+    **urlopen_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\request.py", line 148, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\poolmanager.py", line 244, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 666, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\retry.py", line 376, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+telegram.vendor.ptb_urllib3.urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x000002254645A898>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\updater.py", line 380, in _network_loop_retry
+    if not action_cb():
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\updater.py", line 341, in polling_action_cb
+    allowed_updates=allowed_updates)
+  File "<decorator-gen-31>", line 2, in get_updates
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\bot.py", line 67, in decorator
+    result = func(*args, **kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\bot.py", line 2097, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 334, in post
+    **urlopen_kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 231, in _request_wrapper
+    raise NetworkError('urllib3 HTTPError {0}'.format(error))
+telegram.error.NetworkError: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x000002254645A898>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',))
+2020-04-18 18:27:38,980 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x000002254645A908>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',)': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 18:27:38,983 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x000002254645A6A0>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',)': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 18:27:38,987 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x000002254645A828>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',)': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 18:27:38,990 ERROR telegram.ext.updater Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x000002254645A710>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',))
+2020-04-18 18:27:38,991 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+OSError: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 617, in urlopen
+    chunked=chunked)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 360, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 857, in _validate_conn
+    super(HTTPSConnectionPool, self)._validate_conn(conn)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 289, in _validate_conn
+    conn.connect()
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+telegram.vendor.ptb_urllib3.urllib3.exceptions.NewConnectionError: <telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x000002254645A710>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 225, in _request_wrapper
+    resp = self._con_pool.request(*args, **kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\request.py", line 70, in request
+    **urlopen_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\request.py", line 148, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\poolmanager.py", line 244, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 666, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\retry.py", line 376, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+telegram.vendor.ptb_urllib3.urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x000002254645A710>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\updater.py", line 380, in _network_loop_retry
+    if not action_cb():
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\updater.py", line 341, in polling_action_cb
+    allowed_updates=allowed_updates)
+  File "<decorator-gen-31>", line 2, in get_updates
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\bot.py", line 67, in decorator
+    result = func(*args, **kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\bot.py", line 2097, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 334, in post
+    **urlopen_kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 231, in _request_wrapper
+    raise NetworkError('urllib3 HTTPError {0}'.format(error))
+telegram.error.NetworkError: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x000002254645A710>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',))
+2020-04-18 18:27:50,387 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x000002254645A550>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',)': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 18:27:50,390 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x000002254645A9B0>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',)': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 18:27:50,393 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x000002254645AC88>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',)': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 18:27:50,398 ERROR telegram.ext.updater Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x000002254646D4A8>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',))
+2020-04-18 18:27:50,398 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+OSError: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 617, in urlopen
+    chunked=chunked)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 360, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 857, in _validate_conn
+    super(HTTPSConnectionPool, self)._validate_conn(conn)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 289, in _validate_conn
+    conn.connect()
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+telegram.vendor.ptb_urllib3.urllib3.exceptions.NewConnectionError: <telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x000002254646D4A8>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 225, in _request_wrapper
+    resp = self._con_pool.request(*args, **kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\request.py", line 70, in request
+    **urlopen_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\request.py", line 148, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\poolmanager.py", line 244, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 666, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\retry.py", line 376, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+telegram.vendor.ptb_urllib3.urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x000002254646D4A8>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\updater.py", line 380, in _network_loop_retry
+    if not action_cb():
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\updater.py", line 341, in polling_action_cb
+    allowed_updates=allowed_updates)
+  File "<decorator-gen-31>", line 2, in get_updates
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\bot.py", line 67, in decorator
+    result = func(*args, **kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\bot.py", line 2097, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 334, in post
+    **urlopen_kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 231, in _request_wrapper
+    raise NetworkError('urllib3 HTTPError {0}'.format(error))
+telegram.error.NetworkError: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x000002254646D4A8>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',))
+2020-04-18 18:28:07,491 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x000002254645A5C0>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',)': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 18:28:07,494 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546431DD8>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',)': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 18:28:07,497 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x00000225464312B0>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',)': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 18:28:07,501 ERROR telegram.ext.updater Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546431F28>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',))
+2020-04-18 18:28:07,505 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+OSError: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 617, in urlopen
+    chunked=chunked)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 360, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 857, in _validate_conn
+    super(HTTPSConnectionPool, self)._validate_conn(conn)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 289, in _validate_conn
+    conn.connect()
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+telegram.vendor.ptb_urllib3.urllib3.exceptions.NewConnectionError: <telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546431F28>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 225, in _request_wrapper
+    resp = self._con_pool.request(*args, **kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\request.py", line 70, in request
+    **urlopen_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\request.py", line 148, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\poolmanager.py", line 244, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 666, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\retry.py", line 376, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+telegram.vendor.ptb_urllib3.urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546431F28>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\updater.py", line 380, in _network_loop_retry
+    if not action_cb():
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\updater.py", line 341, in polling_action_cb
+    allowed_updates=allowed_updates)
+  File "<decorator-gen-31>", line 2, in get_updates
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\bot.py", line 67, in decorator
+    result = func(*args, **kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\bot.py", line 2097, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 334, in post
+    **urlopen_kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 231, in _request_wrapper
+    raise NetworkError('urllib3 HTTPError {0}'.format(error))
+telegram.error.NetworkError: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546431F28>: Failed to establish a new connection: [WinError 10013] Сделана попытка доступа к сокету методом, запрещенным правами доступа',))
+2020-04-18 18:28:34,173 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546431C18>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение',)': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 18:28:35,236 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546477518>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение',)': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 18:28:36,287 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546477358>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение',)': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 18:28:37,324 ERROR telegram.ext.updater Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546477240>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение',))
+2020-04-18 18:28:37,325 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 617, in urlopen
+    chunked=chunked)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 360, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 857, in _validate_conn
+    super(HTTPSConnectionPool, self)._validate_conn(conn)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 289, in _validate_conn
+    conn.connect()
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+telegram.vendor.ptb_urllib3.urllib3.exceptions.NewConnectionError: <telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546477240>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 225, in _request_wrapper
+    resp = self._con_pool.request(*args, **kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\request.py", line 70, in request
+    **urlopen_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\request.py", line 148, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\poolmanager.py", line 244, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 666, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\retry.py", line 376, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+telegram.vendor.ptb_urllib3.urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546477240>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\updater.py", line 380, in _network_loop_retry
+    if not action_cb():
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\updater.py", line 341, in polling_action_cb
+    allowed_updates=allowed_updates)
+  File "<decorator-gen-31>", line 2, in get_updates
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\bot.py", line 67, in decorator
+    result = func(*args, **kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\bot.py", line 2097, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 334, in post
+    **urlopen_kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 231, in _request_wrapper
+    raise NetworkError('urllib3 HTTPError {0}'.format(error))
+telegram.error.NetworkError: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546477240>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение',))
+2020-04-18 18:29:16,794 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x00000225464770F0>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение',)': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 18:29:17,817 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546408240>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение',)': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 18:29:18,858 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546408BE0>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение',)': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 18:29:19,893 ERROR telegram.ext.updater Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546408FD0>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение',))
+2020-04-18 18:29:19,894 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 617, in urlopen
+    chunked=chunked)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 360, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 857, in _validate_conn
+    super(HTTPSConnectionPool, self)._validate_conn(conn)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 289, in _validate_conn
+    conn.connect()
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+telegram.vendor.ptb_urllib3.urllib3.exceptions.NewConnectionError: <telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546408FD0>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 225, in _request_wrapper
+    resp = self._con_pool.request(*args, **kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\request.py", line 70, in request
+    **urlopen_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\request.py", line 148, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\poolmanager.py", line 244, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 666, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\retry.py", line 376, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+telegram.vendor.ptb_urllib3.urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546408FD0>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\updater.py", line 380, in _network_loop_retry
+    if not action_cb():
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\updater.py", line 341, in polling_action_cb
+    allowed_updates=allowed_updates)
+  File "<decorator-gen-31>", line 2, in get_updates
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\bot.py", line 67, in decorator
+    result = func(*args, **kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\bot.py", line 2097, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 334, in post
+    **urlopen_kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 231, in _request_wrapper
+    raise NetworkError('urllib3 HTTPError {0}'.format(error))
+telegram.error.NetworkError: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546408FD0>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение',))
+2020-04-18 18:29:50,947 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x000002254646D668>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение',)': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 18:29:51,998 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x000002254646D240>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение',)': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 18:29:53,032 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x000002254646D5C0>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение',)': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 18:29:54,066 ERROR telegram.ext.updater Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x000002254646DCC0>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение',))
+2020-04-18 18:29:54,066 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 617, in urlopen
+    chunked=chunked)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 360, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 857, in _validate_conn
+    super(HTTPSConnectionPool, self)._validate_conn(conn)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 289, in _validate_conn
+    conn.connect()
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+telegram.vendor.ptb_urllib3.urllib3.exceptions.NewConnectionError: <telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x000002254646DCC0>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 225, in _request_wrapper
+    resp = self._con_pool.request(*args, **kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\request.py", line 70, in request
+    **urlopen_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\request.py", line 148, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\poolmanager.py", line 244, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 666, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\retry.py", line 376, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+telegram.vendor.ptb_urllib3.urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x000002254646DCC0>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\updater.py", line 380, in _network_loop_retry
+    if not action_cb():
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\updater.py", line 341, in polling_action_cb
+    allowed_updates=allowed_updates)
+  File "<decorator-gen-31>", line 2, in get_updates
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\bot.py", line 67, in decorator
+    result = func(*args, **kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\bot.py", line 2097, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 334, in post
+    **urlopen_kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 231, in _request_wrapper
+    raise NetworkError('urllib3 HTTPError {0}'.format(error))
+telegram.error.NetworkError: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x000002254646DCC0>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение',))
+2020-04-18 18:30:25,095 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x000002254646D6D8>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение',)': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 18:30:26,124 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x000002254646DBA8>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение',)': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 18:30:27,163 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x000002254646DB00>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение',)': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 18:30:28,196 ERROR telegram.ext.updater Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x000002254646D780>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение',))
+2020-04-18 18:30:28,197 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 617, in urlopen
+    chunked=chunked)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 360, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 857, in _validate_conn
+    super(HTTPSConnectionPool, self)._validate_conn(conn)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 289, in _validate_conn
+    conn.connect()
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+telegram.vendor.ptb_urllib3.urllib3.exceptions.NewConnectionError: <telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x000002254646D780>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 225, in _request_wrapper
+    resp = self._con_pool.request(*args, **kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\request.py", line 70, in request
+    **urlopen_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\request.py", line 148, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\poolmanager.py", line 244, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 666, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\retry.py", line 376, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+telegram.vendor.ptb_urllib3.urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x000002254646D780>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\updater.py", line 380, in _network_loop_retry
+    if not action_cb():
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\updater.py", line 341, in polling_action_cb
+    allowed_updates=allowed_updates)
+  File "<decorator-gen-31>", line 2, in get_updates
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\bot.py", line 67, in decorator
+    result = func(*args, **kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\bot.py", line 2097, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 334, in post
+    **urlopen_kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 231, in _request_wrapper
+    raise NetworkError('urllib3 HTTPError {0}'.format(error))
+telegram.error.NetworkError: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x000002254646D780>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение',))
+2020-04-18 18:30:59,221 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x000002254646D2E8>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение',)': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 18:31:00,255 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022545BE4CF8>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение',)': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 18:31:01,276 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546506C18>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение',)': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 18:31:02,313 ERROR telegram.ext.updater Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546408CF8>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение',))
+2020-04-18 18:31:02,313 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 617, in urlopen
+    chunked=chunked)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 360, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 857, in _validate_conn
+    super(HTTPSConnectionPool, self)._validate_conn(conn)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 289, in _validate_conn
+    conn.connect()
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+telegram.vendor.ptb_urllib3.urllib3.exceptions.NewConnectionError: <telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546408CF8>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 225, in _request_wrapper
+    resp = self._con_pool.request(*args, **kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\request.py", line 70, in request
+    **urlopen_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\request.py", line 148, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\poolmanager.py", line 244, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 666, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\retry.py", line 376, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+telegram.vendor.ptb_urllib3.urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546408CF8>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\updater.py", line 380, in _network_loop_retry
+    if not action_cb():
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\updater.py", line 341, in polling_action_cb
+    allowed_updates=allowed_updates)
+  File "<decorator-gen-31>", line 2, in get_updates
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\bot.py", line 67, in decorator
+    result = func(*args, **kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\bot.py", line 2097, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 334, in post
+    **urlopen_kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 231, in _request_wrapper
+    raise NetworkError('urllib3 HTTPError {0}'.format(error))
+telegram.error.NetworkError: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546408CF8>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение',))
+2020-04-18 18:31:33,377 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022544D22160>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение',)': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 18:31:34,409 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546477198>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение',)': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 18:31:35,447 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x00000225464774E0>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение',)': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 18:31:36,474 ERROR telegram.ext.updater Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546477080>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение',))
+2020-04-18 18:31:36,475 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 617, in urlopen
+    chunked=chunked)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 360, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 857, in _validate_conn
+    super(HTTPSConnectionPool, self)._validate_conn(conn)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 289, in _validate_conn
+    conn.connect()
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+telegram.vendor.ptb_urllib3.urllib3.exceptions.NewConnectionError: <telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546477080>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 225, in _request_wrapper
+    resp = self._con_pool.request(*args, **kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\request.py", line 70, in request
+    **urlopen_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\request.py", line 148, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\poolmanager.py", line 244, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 666, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\retry.py", line 376, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+telegram.vendor.ptb_urllib3.urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546477080>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\updater.py", line 380, in _network_loop_retry
+    if not action_cb():
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\updater.py", line 341, in polling_action_cb
+    allowed_updates=allowed_updates)
+  File "<decorator-gen-31>", line 2, in get_updates
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\bot.py", line 67, in decorator
+    result = func(*args, **kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\bot.py", line 2097, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 334, in post
+    **urlopen_kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 231, in _request_wrapper
+    raise NetworkError('urllib3 HTTPError {0}'.format(error))
+telegram.error.NetworkError: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546477080>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение',))
+2020-04-18 18:32:07,510 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x00000225464082E8>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение',)': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 18:32:08,547 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546431080>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение',)': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 18:32:09,576 WARNING telegram.vendor.ptb_urllib3.urllib3.connectionpool Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546431198>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение',)': /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates
+2020-04-18 18:32:10,600 ERROR telegram.ext.updater Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546431EF0>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение',))
+2020-04-18 18:32:10,601 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 617, in urlopen
+    chunked=chunked)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 360, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 857, in _validate_conn
+    super(HTTPSConnectionPool, self)._validate_conn(conn)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 289, in _validate_conn
+    conn.connect()
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+telegram.vendor.ptb_urllib3.urllib3.exceptions.NewConnectionError: <telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546431EF0>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 225, in _request_wrapper
+    resp = self._con_pool.request(*args, **kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\request.py", line 70, in request
+    **urlopen_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\request.py", line 148, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\poolmanager.py", line 244, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 695, in urlopen
+    **response_kw)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 666, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\retry.py", line 376, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+telegram.vendor.ptb_urllib3.urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546431EF0>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\updater.py", line 380, in _network_loop_retry
+    if not action_cb():
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\updater.py", line 341, in polling_action_cb
+    allowed_updates=allowed_updates)
+  File "<decorator-gen-31>", line 2, in get_updates
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\bot.py", line 67, in decorator
+    result = func(*args, **kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\bot.py", line 2097, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 334, in post
+    **urlopen_kwargs)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\utils\request.py", line 231, in _request_wrapper
+    raise NetworkError('urllib3 HTTPError {0}'.format(error))
+telegram.error.NetworkError: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1143604661:AAGFGL-165iA0wANFkvlS-jh2eAVxo784VY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x0000022546431EF0>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение',))
+2020-04-18 18:34:58,179 ERROR root During /rooms API's sent error: Not found
+2020-04-18 18:46:38,676 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\dispatcher.py", line 390, in process_update
+    handler.handle_update(update, self, check, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\conversationhandler.py", line 462, in handle_update
+    new_state = handler.handle_update(update, dispatcher, check_result, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\handler.py", line 117, in handle_update
+    return self.callback(update, context)
+  File "C:/Users/Coding/PycharmProjects/a7PhotoFilter/bot/main.py", line 145, in room
+    current_room[curr_id] = num - 1
+TypeError: unsupported operand type(s) for -: 'str' and 'int'
+2020-04-18 18:46:41,959 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\dispatcher.py", line 390, in process_update
+    handler.handle_update(update, self, check, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\conversationhandler.py", line 462, in handle_update
+    new_state = handler.handle_update(update, dispatcher, check_result, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\handler.py", line 117, in handle_update
+    return self.callback(update, context)
+  File "C:/Users/Coding/PycharmProjects/a7PhotoFilter/bot/main.py", line 145, in room
+    current_room[curr_id] = num - 1
+TypeError: unsupported operand type(s) for -: 'str' and 'int'
+2020-04-18 18:57:49,083 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\dispatcher.py", line 390, in process_update
+    handler.handle_update(update, self, check, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\conversationhandler.py", line 462, in handle_update
+    new_state = handler.handle_update(update, dispatcher, check_result, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\handler.py", line 117, in handle_update
+    return self.callback(update, context)
+  File "C:/Users/Coding/PycharmProjects/a7PhotoFilter/bot/main.py", line 148, in room
+    room = current_rooms[curr_id][current_room[curr_id]]['Room']
+IndexError: list index out of range
