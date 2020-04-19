@@ -3,7 +3,7 @@ from .rooms import Room
 from . import db_session
 from . import filters
 from . import images_parser
-from .. import config
+import config
 
 from flask import jsonify, request
 from flask_restful import Resource
@@ -40,7 +40,6 @@ class ImagesResource(Resource):
         image = session.query(Image).get(image_id)
         if not image:
             raise exceptions.NotFound
-        image.room.image_count -= 1
         image.room = None
         image.room_id = None
         session.delete(image)
@@ -61,12 +60,10 @@ class ImagesResource(Resource):
                 if args.get('remove_room') == True:
                     image.room = None
                     image.room_id = None
-                    room.image_count -= 1
                 else:
-                    if room.image_count < config.ROOM_IMAGE_LIMIT:
+                    if len(room.images) < config.ROOM_IMAGE_LIMIT:
                         image.room_id = room.id
                         image.room = room
-                        room.image_count += 1
                     else:
                         raise exceptions.Forbidden  # временно
             else:
@@ -90,10 +87,9 @@ class ImagesListResource(Resource):
         if args.get('room_id'):
             room = session.query(Room).filter(Room.id == args.get('room_id')).first()
             if room:
-                if room.image_count < config.ROOM_IMAGE_LIMIT:
+                if len(room.images) < config.ROOM_IMAGE_LIMIT:
                     image.room_id = room.id
                     image.room = room
-                    room.image_count += 1
                 else:
                     raise exceptions.Forbidden  # временно
             else:
