@@ -1,5 +1,5 @@
 from telegram.ext import (CommandHandler, ConversationHandler, Updater, MessageHandler, Filters, StringCommandHandler)
-from telegram import InputMediaPhoto, ParseMode, ReplyKeyboardMarkup, ReplyKeyboardRemove, PhotoSize
+from telegram import InputMediaPhoto, ParseMode, bot, ReplyKeyboardMarkup, ReplyKeyboardRemove
 
 from requests import post, get, delete, put
 
@@ -82,7 +82,7 @@ def show_rooms(update, context, refresh=True):  # Function to show all users' ro
             logging.error(f'During /rooms API\'s sent error: {user.get("error")}')
             update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
                                       'скоро все наладится!')
-            return ConversationHandler.END
+            return
         rooms = user['User'].get('rooms')
         global current_rooms
         current_rooms[update.message.chat_id] = []
@@ -134,7 +134,7 @@ def show_room(update, context, num=None, refresh=True):  # Function to show user
                 logging.error(f'During /rooms API\'s sent error: {image.get("error")}')
                 update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
                                           'скоро все наладится!')
-                return ConversationHandler.END
+                return 1
             text += f" <b>{i + 1}</b>: " + image['Image'].get('name') + '\n'
             current_images[update.message.chat_id].append(image)
     else:
@@ -207,7 +207,7 @@ def add_room(update, context):  # 2nd in Conversation
             logging.error(f'During /rooms API\'s sent error: {answer.get("error")}')
             update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
                                       'скоро все наладится!')
-            return ConversationHandler.END
+            return
         else:
             update.message.reply_text('✅Комната успешно создана!')
             show_rooms(update, context)
@@ -234,8 +234,6 @@ def add_user_to_room(update, context):  # 4th in Conversation
         show_rooms(update, context)
         return 1
     elif answer.get('error') == exceptions.Forbidden:
-        updater.bot.send_message(update.message.chat_id, f'🏚Эта комната переполнена!')
-    elif answer.get('error') == exceptions.NotFound:
         updater.bot.send_message(update.message.chat_id, f'🏚Эта комната переполнена!')
     else:
         logging.error(f'During /rooms API\'s sent error: {answer.get("error")}')
@@ -391,10 +389,8 @@ def delete_image(update, context):  # 9th in Conversation
     return 5
 
 
-def image_get(update, context):
-    file_info = context.bot.get_file(update.message.photo[0].file_id)
-    file = bytes(file_info.download_as_bytearray())
-    base64_data = base64.b64encode(file).decode('utf-8')
+def image_get(update, context):  # 1st in Conversation
+    pass
 
 
 def choose_filter(update, context):  # 2nd in Conversation
