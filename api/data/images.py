@@ -16,6 +16,7 @@ class Image(SqlAlchemyBase, SerializerMixin):
     room = orm.relation('Room')  # связь с Room многие к одному
     name = Column(sqlalchemy.String)
     path = Column(sqlalchemy.String)
+    mime = Column(sqlalchemy.String)
 
     def generate_path(self):
         now = datetime.now().strftime('%H%M%S-%d%m%Y')

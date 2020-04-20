@@ -1,0 +1,117 @@
+2020-04-20 17:18:24,847 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\dispatcher.py", line 390, in process_update
+    handler.handle_update(update, self, check, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\handler.py", line 117, in handle_update
+    return self.callback(update, context)
+  File "C:/Users/Coding/PycharmProjects/a7PhotoFilter/bot/main.py", line 396, in image_get
+    link = Bot.get_file()
+TypeError: get_file() missing 2 required positional arguments: 'self' and 'file_id'
+2020-04-20 17:20:03,389 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\dispatcher.py", line 390, in process_update
+    handler.handle_update(update, self, check, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\handler.py", line 117, in handle_update
+    return self.callback(update, context)
+  File "C:/Users/Coding/PycharmProjects/a7PhotoFilter/bot/main.py", line 396, in image_get
+    link = Bot.get_file()
+TypeError: get_file() missing 2 required positional arguments: 'self' and 'file_id'
+2020-04-20 17:26:50,985 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\dispatcher.py", line 390, in process_update
+    handler.handle_update(update, self, check, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\conversationhandler.py", line 462, in handle_update
+    new_state = handler.handle_update(update, dispatcher, check_result, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\handler.py", line 117, in handle_update
+    return self.callback(update, context)
+  File "C:/Users/Coding/PycharmProjects/a7PhotoFilter/bot/main.py", line 396, in image_get
+    link = Bot.get_file('photo')
+TypeError: get_file() missing 1 required positional argument: 'file_id'
+2020-04-20 17:28:37,738 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\dispatcher.py", line 390, in process_update
+    handler.handle_update(update, self, check, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\conversationhandler.py", line 462, in handle_update
+    new_state = handler.handle_update(update, dispatcher, check_result, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\handler.py", line 117, in handle_update
+    return self.callback(update, context)
+  File "C:/Users/Coding/PycharmProjects/a7PhotoFilter/bot/main.py", line 396, in image_get
+    link = Bot.get_file(PhotoSize)
+TypeError: get_file() missing 1 required positional argument: 'file_id'
+2020-04-20 17:31:47,959 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\dispatcher.py", line 390, in process_update
+    handler.handle_update(update, self, check, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\conversationhandler.py", line 462, in handle_update
+    new_state = handler.handle_update(update, dispatcher, check_result, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\handler.py", line 117, in handle_update
+    return self.callback(update, context)
+  File "C:/Users/Coding/PycharmProjects/a7PhotoFilter/bot/main.py", line 396, in image_get
+    fid = update.message.photo.file_id
+AttributeError: 'list' object has no attribute 'file_id'
+2020-04-20 17:33:56,073 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\dispatcher.py", line 390, in process_update
+    handler.handle_update(update, self, check, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\conversationhandler.py", line 462, in handle_update
+    new_state = handler.handle_update(update, dispatcher, check_result, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\handler.py", line 117, in handle_update
+    return self.callback(update, context)
+  File "C:/Users/Coding/PycharmProjects/a7PhotoFilter/bot/main.py", line 396, in image_get
+    fid = update.message.photo.file_id
+AttributeError: 'list' object has no attribute 'file_id'
+2020-04-20 17:35:26,879 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\dispatcher.py", line 390, in process_update
+    handler.handle_update(update, self, check, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\conversationhandler.py", line 462, in handle_update
+    new_state = handler.handle_update(update, dispatcher, check_result, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\handler.py", line 117, in handle_update
+    return self.callback(update, context)
+  File "C:/Users/Coding/PycharmProjects/a7PhotoFilter/bot/main.py", line 396, in image_get
+    fid = update.message.photo.file_id
+AttributeError: 'list' object has no attribute 'file_id'
+2020-04-20 17:36:21,341 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\dispatcher.py", line 390, in process_update
+    handler.handle_update(update, self, check, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\conversationhandler.py", line 462, in handle_update
+    new_state = handler.handle_update(update, dispatcher, check_result, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\handler.py", line 117, in handle_update
+    return self.callback(update, context)
+  File "C:/Users/Coding/PycharmProjects/a7PhotoFilter/bot/main.py", line 398, in image_get
+    link = Bot.getFile(fid)
+TypeError: get_file() missing 1 required positional argument: 'file_id'
+2020-04-20 17:37:46,097 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\dispatcher.py", line 390, in process_update
+    handler.handle_update(update, self, check, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\conversationhandler.py", line 462, in handle_update
+    new_state = handler.handle_update(update, dispatcher, check_result, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\handler.py", line 117, in handle_update
+    return self.callback(update, context)
+  File "C:/Users/Coding/PycharmProjects/a7PhotoFilter/bot/main.py", line 398, in image_get
+    link = Bot.get_file(fid)
+TypeError: get_file() missing 1 required positional argument: 'file_id'
+2020-04-20 17:39:17,525 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\dispatcher.py", line 390, in process_update
+    handler.handle_update(update, self, check, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\conversationhandler.py", line 462, in handle_update
+    new_state = handler.handle_update(update, dispatcher, check_result, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\handler.py", line 117, in handle_update
+    return self.callback(update, context)
+  File "C:/Users/Coding/PycharmProjects/a7PhotoFilter/bot/main.py", line 396, in image_get
+    fid = update.message.photo[0].file_id
+AttributeError: 'CallbackContext' object has no attribute 'message'
+2020-04-20 17:39:58,145 ERROR telegram.ext.dispatcher No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\dispatcher.py", line 390, in process_update
+    handler.handle_update(update, self, check, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\conversationhandler.py", line 462, in handle_update
+    new_state = handler.handle_update(update, dispatcher, check_result, context)
+  File "C:\Users\Coding\venv\lib\site-packages\telegram\ext\handler.py", line 117, in handle_update
+    return self.callback(update, context)
+  File "C:/Users/Coding/PycharmProjects/a7PhotoFilter/bot/main.py", line 396, in image_get
+    fid = update.message.photo[0].file_id
+AttributeError: 'CallbackContext' object has no attribute 'message'

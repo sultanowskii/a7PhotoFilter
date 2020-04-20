@@ -26,11 +26,11 @@ class ImagesResource(Resource):
         if not image:
             raise exceptions.NotFound
         if args.get('action') == 'applyfilter' and args.get('fid', None):
-            res_image = filters.add_filter(image, request.args['fid'])
+            res_image = filters.add_filter(image, request.args['fid'], image.mime)
         else:
             res_image = PilImage.open(image.path)
         buf = BytesIO()
-        res_image.save(buf, format='JPEG')
+        res_image.save(buf, format=image.mime)
         byte_im = buf.getvalue()
         string_data = base64.b64encode(byte_im).decode('utf-8')
         return jsonify({'Image': {'id': iid, 'data': string_data, 'name': name}})
@@ -84,6 +84,7 @@ class ImagesListResource(Resource):
         session = db_session.create_session()
         image = Image()
         image.name = args.get('name')
+        image.mime = args.get('mime')
         if args.get('room_id'):
             room = session.query(Room).filter(Room.id == args.get('room_id')).first()
             if room:
@@ -97,7 +98,7 @@ class ImagesListResource(Resource):
         image.generate_path()
         file = base64.b64decode(args.get('image_data'))
         img = PilImage.open(BytesIO(file))
-        img.save(f'{image.path}.jpg')  # необходимо вместе с картинкой подавать сюда в .json и расширение!
+        img.save(f'{image.path}.{image.mime.lower()}')
         session.add(image)
         session.commit()
-        return jsonify({'success': 'OK'})
+        return jsonify({'success': 'OK', 'id': image.id})
