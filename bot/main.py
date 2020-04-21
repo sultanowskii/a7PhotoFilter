@@ -591,8 +591,8 @@ def choose_room(update, context):  # 3rd in Conversation
         return ConversationHandler.END
     name = room['Room']['name']
     update.message.reply_text(f'✅Изображение успешно добавлено в комнату {name}')
-    home_menu(update)
-    return ConversationHandler.END
+    update.message.reply_text('🔠Введите название изображения')
+    return 5
 
 
 def add_room_with_image(update, context):  # 4th in Conversation
@@ -616,8 +616,23 @@ def add_room_with_image(update, context):  # 4th in Conversation
                                       'скоро все наладится!')
             return ConversationHandler.END
         update.message.reply_text('✅Комната успешно создана, фото добавлено!')
-        home_menu(update)
+        update.message.reply_text('🔠Введите название изображения')
+        return 5
+
+
+def set_name_to_image(update, context):  # 5th in Conversation
+    global filtered_im_id
+    name = update.message.text
+    fii = filtered_im_id.get(update.message.chat_id)
+    response = put(f'{config.API_ADDRESS}/api/images/{fii}', json={'name': name}).json()
+    if not response or response.get('error'):
+        logging.error(f'During /rooms API\'s sent error: {response.get("error")}')
+        update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
+                                  'скоро все наладится!')
         return ConversationHandler.END
+    update.message.reply_text('✅Успешно!')
+    home_menu(update)
+    return ConversationHandler.END
 
 
 def home(update, context):
@@ -658,7 +673,8 @@ def main():
             1: [MessageHandler(Filters.text, choose_filter)],
             2: [MessageHandler(Filters.text, save_image_to_room)],
             3: [MessageHandler(Filters.text, choose_room)],
-            4: [MessageHandler(Filters.text, add_room_with_image)]
+            4: [MessageHandler(Filters.text, add_room_with_image)],
+            5: [MessageHandler(Filters.text, set_name_to_image)]
         },
 
         fallbacks=[CommandHandler('home', home)]
@@ -668,14 +684,7 @@ def main():
     dp.add_handler(rooms_conv_handler)
     dp.add_handler(image_conv_handler)
     updater.start_polling()
-    session = db_session.create_session()
-    global start_text
-    all_users = session.query(User).all()
-    reply_keyboard = [['/rooms', '/help']]
-    markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True)
-    for user in all_users:
-        updater.bot.send_message(user.chat_id, start_text, parse_mode=ParseMode.HTML, reply_markup=markup)
-    del all_users
+
     updater.idle()
 
 
