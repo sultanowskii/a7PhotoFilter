@@ -2,11 +2,10 @@ from .images import Image
 from werkzeug import exceptions
 from PIL import ImageFilter
 from PIL import Image
-from random import random
-
+import random
 
 def add_filter(image_object, fid, mime):
-    im = Image.open(f'{image_object.path}.{mime}')
+    im = Image.open(image_object.path)
     pixels = im.load()  # список с пикселями
     x, y = im.size
     fid = int(fid)
@@ -40,6 +39,12 @@ def add_filter(image_object, fid, mime):
         return im
     elif fid == 11:
         all_black_white(pixels, x, y)
+        return im
+    elif fid == 12:
+        color_inversion3(pixels, x, y)
+        return im
+    elif fid == 13:
+        color_inversion4(pixels, x, y)
         return im
     else:
         raise exceptions.NotFound
@@ -125,10 +130,10 @@ def reducing_the_quality(pixels, x, y):  # уменьшение качества
 
 
 def add_noise(pixels, x, y):  # добавление шума(9)
-    factor = 70
+    num = 70
     for i in range(x):
         for j in range(y):
-            rand = random.randint(-factor, factor)
+            rand = random.randint(-num, num)
             r, g, b = pixels[i, j]
             r += rand
             g += rand
@@ -148,7 +153,7 @@ def add_noise(pixels, x, y):  # добавление шума(9)
             pixels[i, j] = r, g, b
 
 
-def brown(pixels, x, y):  # ретро (10)
+def brown(pixels, x, y):  # Ретро (10)
     depth = 30
     for i in range(x):
         for j in range(y):
@@ -166,14 +171,28 @@ def brown(pixels, x, y):  # ретро (10)
             pixels[i, j] = r, g, b
 
 
-def all_black_white(pixels, x, y):  # чёрно-белое 2 (11)
-    factor = 100
+def all_black_white(pixels, x, y):  # Чёрно-белое 2 (11)
+    num = 100
     for i in range(x):
         for j in range(y):
             r, g, b = pixels[i, j]
             S = r + g + b
-            if S > (((255 + factor) // 2) * 3):
+            if S > (((255 + num) // 2) * 3):
                 r, g, b = 255, 255, 255
             else:
                 r, g, b = 0, 0, 0
             pixels[i, j] = r, g, b
+
+
+def color_inversion3(pixels, x, y):  # Другой мир 3 (12)
+    for i in range(x):
+        for j in range(y):
+            r, g, b = pixels[i, j]
+            pixels[i, j] = g, b, r
+
+
+def color_inversion4(pixels, x, y):  # Другой мир 4 (13)
+    for i in range(x):
+        for j in range(y):
+            r, g, b = pixels[i, j]
+            pixels[i, j] = b, g, r

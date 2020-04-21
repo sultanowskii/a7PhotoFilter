@@ -11,6 +11,7 @@ import base64
 from io import BytesIO
 from werkzeug import exceptions
 import logging
+from datetime import datetime
 
 logging.basicConfig(
     filename='logs.log',
@@ -19,24 +20,39 @@ logging.basicConfig(
 
 db_session.global_init("db/users.sqlite")
 
-current_rooms = dict()
-current_room = dict()
-current_images = dict()
-current_image = dict()
+current_rooms = dict()  # all current user's rooms
+current_room = dict()  # local id of current user's room
+current_images = dict()  # all current user's images in current room
+current_image = dict()  # local id of current user's image
+fit_rooms = dict()  # a number of fit rooms (where user can save his image)
+loaded_im_id = dict()  # id (on API) of image which user just uploaded
+filtered_im_id = dict()  # id (on API) of filtered image which user just uploaded
+start_text = '<b>Главная</b>\n\n' \
+             ' 🌃 Чтобы приступить к обработке изображения, просто пришли мне его!\n' \
+             ' 🏘 Для просмотра своих комнат напиши /rooms\n' \
+             ' 🤔 Чтобы получить помощь, используй /help'
 updater = None
-fit_rooms = 0
+
+
+def home_menu(update):
+    global start_text
+    reply_keyboard = [['/rooms', '/help']]
+    markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True)
+    update.message.reply_text(start_text, parse_mode=ParseMode.HTML, reply_markup=markup)
 
 
 def start(update, context):
+    reply_keyboard = [['/help']]
+    markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True)
     session = db_session.create_session()
     chat_id = update.message.chat_id
     user = session.query(User).filter(User.chat_id == chat_id).first()
     if not user:
         name = update.message.chat.first_name
         lastname = update.message.chat.last_name
-        answer = post(f'{config.API_ADDRESS}/api/users', json={'name': name, 'lastname': lastname}).json()
-        if 'success' in answer.keys():
-            user = User(name=name, lastname=lastname, chat_id=chat_id, mainid=answer.get('id'))
+        response = post(f'{config.API_ADDRESS}/api/users', json={'name': name, 'lastname': lastname}).json()
+        if 'success' in response.keys():
+            user = User(name=name, lastname=lastname, chat_id=chat_id, mainid=response.get('id'))
             session.add(user)
             session.commit()
             logging.info(f'New user registered: {chat_id} {lastname} {name}')
@@ -44,9 +60,10 @@ def start(update, context):
                                       f" 📷Я помогу тебе наложить фильтр на твое фото.\n"
                                       f"Помощь по командам - /help.\n"
                                       f"А для того, чтобы наложить фильтр на твое фото, пришли мне его! "
-                                      f"(ограничение по размеру файла: 300кб)")
+                                      f"(ограничение по размеру файла: 300кб)\n\n"
+                                      " 😽 Приятного использования!", reply_markup=markup)
         else:
-            err = answer.get('error')
+            err = response.get('error')
             update.message.reply_text(f'Ошибка сервера! {err}')
     else:
         name = user.name
@@ -54,10 +71,13 @@ def start(update, context):
                                   f" 📷 Я помогу тебе наложить фильтр на твое фото.\n"
                                   f"Помощь по командам - /help.\n"
                                   f" А для того, чтобы наложить фильтр на твое фото, пришли мне его! "
-                                  f"(ограничение по размеру файла: 300кб)")
+                                  f"(ограничение по размеру файла: 300кб)\n\n"
+                                  "😽 Приятного использования!", reply_markup=markup)
 
 
 def help(update, context):
+    reply_keyboard = [['/rooms', '/help']]
+    markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True)
     update.message.reply_text(
         "  Я помогу наложить фильтр на фото.\n"
         "Чтобы начать, просто пришли его мне!\n\n"
@@ -69,7 +89,8 @@ def help(update, context):
         "  /rooms - открыть список своих комнат\n"
         "  /help - получить помощь (это сообщение)\n\n"
         "👨‍💻 Разработчики: @a7ult, @gabidullin_kamil\n"
-        "Github (a7ult): https://github.com/sultanowskii/a7PhotoFilter", parse_mode=ParseMode.HTML)
+        "Github (a7ult): https://github.com/sultanowskii/a7PhotoFilter\n\n"
+        " 😽 Приятного использования!", parse_mode=ParseMode.HTML, reply_markup=markup)
 
 
 def show_rooms(update, context, refresh=True):  # Function to show all users' rooms. 'Refresh' is needing or not to
@@ -86,6 +107,7 @@ def show_rooms(update, context, refresh=True):  # Function to show all users' ro
             return
         rooms = user['User'].get('rooms')
         global current_rooms
+        update.message.reply_text('👾Открываю список комнат...')
         current_rooms[update.message.chat_id] = []
         for i in range(len(rooms)):
             room = get(f'{config.API_ADDRESS}/api/rooms/{rooms[i]}').json()
@@ -124,6 +146,7 @@ def show_room(update, context, num=None, refresh=True):  # Function to show user
     room = current_rooms[curr_id][current_room[curr_id]]['Room']
     name = room.get('name')
     text = f'🗃Комната \"{name}\":\n'
+    update.message.reply_text('👾Открываю список изображений...')
     if refresh:
         images = room.get('images')
         current_images[update.message.chat_id] = []
@@ -154,6 +177,7 @@ def rooms(update, context):
 
 
 def command_rooms(update, context):  # 1st in Covnersation
+    global start_text
     command = update.message.text
     if command == '🖍Добавить комнату':
         update.message.reply_text('📝Введите название комнаты:', reply_markup=ReplyKeyboardRemove())
@@ -182,6 +206,7 @@ def command_rooms(update, context):  # 1st in Covnersation
         update.message.reply_text('📧 Введите код комнаты:', reply_markup=ReplyKeyboardRemove())
         return 4
     elif command == '↩️Назад':
+        home_menu(update)
         return ConversationHandler.END
     else:
         session = db_session.create_session()
@@ -203,9 +228,9 @@ def add_room(update, context):  # 2nd in Conversation
     session = db_session.create_session()
     if len(current_rooms[update.message.chat_id]) < config.ROOM_IMAGE_LIMIT:
         user_id = session.query(User).filter(User.chat_id == str(update.message.chat_id)).first().mainid
-        answer = post(f'{config.API_ADDRESS}/api/rooms', json={'name': name, 'users_id': str(user_id)}).json()
-        if not answer or answer.get('error'):
-            logging.error(f'During /rooms API\'s sent error: {answer.get("error")}')
+        response = post(f'{config.API_ADDRESS}/api/rooms', json={'name': name, 'users_id': str(user_id)}).json()
+        if not response or response.get('error'):
+            logging.error(f'During /rooms API\'s sent error: {response.get("error")}')
             update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
                                       'скоро все наладится!')
             return
@@ -229,15 +254,15 @@ def add_user_to_room(update, context):  # 4th in Conversation
     rid = int(rid)
     session = db_session.create_session()
     userid = session.query(User).filter(User.chat_id == update.message.chat_id).first().id
-    answer = put(f'{config.API_ADDRESS}/api/rooms/{rid}', json={'users_id': userid}).json()
-    if answer.get('success'):
+    response = put(f'{config.API_ADDRESS}/api/rooms/{rid}', json={'users_id': userid}).json()
+    if response.get('success'):
         updater.bot.send_message(update.message.chat_id, f'✅Вы были успешно добавлены в комнату \"{name}\"')
         show_rooms(update, context)
         return 1
-    elif answer.get('error') == exceptions.Forbidden:
+    elif response.get('error') == exceptions.Forbidden:
         updater.bot.send_message(update.message.chat_id, f'🏚Эта комната переполнена!')
     else:
-        logging.error(f'During /rooms API\'s sent error: {answer.get("error")}')
+        logging.error(f'During /rooms API\'s sent error: {response.get("error")}')
         update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
                                   'скоро все наладится!')
         return 4
@@ -304,15 +329,15 @@ def command_room(update, context):  # 5th in Conversation
 
 
 def delete_room(update, context):  # 6th in covnersation
-    answer = update.message.text
-    if answer == '✅Да' or answer.lower() == 'да':
+    response = update.message.text
+    if response == '✅Да' or response.lower() == 'да':
         global current_rooms
         global current_room
         userid = update.message.chat_id
         rid = current_rooms[userid][current_room[userid]]['Room']['id']
-        answer = delete(f'{config.API_ADDRESS}/api/rooms/{rid}').json()
-        if not answer:
-            logging.error(f'During /rooms API\'s sent error: {answer.get("error")}')
+        response = delete(f'{config.API_ADDRESS}/api/rooms/{rid}').json()
+        if not response:
+            logging.error(f'During /rooms API\'s sent error: {response.get("error")}')
             update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
                                       'скоро все наладится!')
             return 6
@@ -366,20 +391,20 @@ def command_image(update, context):  # 8th in Conversation
 
 
 def delete_image(update, context):  # 9th in Conversation
-    answer = update.message.text
+    response = update.message.text
     global current_image
     global current_images
     global current_rooms
     global current_room
-    if answer == '✅Да' or answer.lower() == 'да':
+    if response == '✅Да' or response.lower() == 'да':
         userid = update.message.chat_id
         iid = current_images[userid][current_image[userid]]['Image'].get('id')
-        answer = delete(f'{config.API_ADDRESS}/api/images/{iid}').json()
+        response = delete(f'{config.API_ADDRESS}/api/images/{iid}').json()
         rid = current_rooms[userid][current_room[userid]]['Room']['id']
         current_rooms[userid][current_room[userid]] = get(f'{config.API_ADDRESS}/api/rooms/{rid}').json()
         current_images[userid][current_image[userid]] = None
-        if not answer or answer.get('error'):
-            logging.error(f'During /rooms API\'s sent error: {answer.get("error")}')
+        if not response or response.get('error'):
+            logging.error(f'During /rooms API\'s sent error: {response.get("error")}')
             update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
                                       'скоро все наладится!')
             return 9
@@ -391,66 +416,96 @@ def delete_image(update, context):  # 9th in Conversation
 
 
 def image_get(update, context):
-    file_info = context.bot.get_file(update.message.photo[0].file_id)
+    global loaded_im_id
+    file_info = context.bot.get_file(update.message.photo[2].file_id)
+    mime = file_info.file_path.split('.')[-1].upper()
     file = bytes(file_info.download_as_bytearray())
     base64_data = base64.b64encode(file).decode('utf-8')
     reply_keyboard = [['👽Другой мир 1', '👽Другой мир 2', '⚽️Чёрно-белое 1'],
                       ['🖲 Негатив', '💡Высветление', '🌌Размытие'],
                       ['📈Увеличение резкости', '📉Уменьшение качества', '🔊Добавление шума'],
-                      ['🏺Ретро', '⚫️⚪️Чёрно-белое 2']]
+                      ['🏺Ретро', '⚫️⚪️Чёрно-белое 2', '👽Другой мир 3'], ['👽Другой мир 4']]
     markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True)
-    text = '🔠Выберите фильтр \n 👽Другой мир 1 \n 👽Другой мир 2 \n ⚽️Чёрно-белое 1 \n 🖲 Негатив \n 💡Высветление \n' \
-           ' 🌌Размытие \n 📈Увеличение резкости \n 📉Уменьшение качества \n 🔊Добавление шума \n 🏺Ретро' \
-           ' \n ⚫️⚪️Чёрно-белое 2'
-    update.message.reply_text(text, reply_markup=markup)
-    return 2  # (choose_filter)
+    text = '🔠<b>Выберите фильтр:</b>\n\n 👽Другой мир 1\n 👽Другой мир 2\n ⚽️Чёрно-белое 1\n 🖲 Негатив\n' \
+           ' 💡Высветление \n 🌌Размытие\n 📈Увеличение резкости\n 📉Уменьшение качества\n 🔊Добавление шума\n 🏺Ретро' \
+           '\n ⚫️⚪️Чёрно-белое 2\n 👽Другой мир 3\n 👽Другой мир 4'
+    now = datetime.now().strftime('%H%M%S-%d%m%Y')
+    response = post(f'{config.API_ADDRESS}/api/images',
+                    json={'name': now, 'mime': mime, 'image_data': base64_data}).json()
+    if response.get('success') == None:
+        logging.error(f'During /image API\'s sent error: {response.get("error")}')
+        update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
+                                  'скоро все наладится!')
+        return ConversationHandler.END
+    iid = int(response.get('id'))
+    loaded_im_id[update.message.chat_id] = iid
+    update.message.reply_text(text, reply_markup=markup, parse_mode=ParseMode.HTML)
+    return 1
 
 
-def choose_filter(update, context):  # 2nd in Conversation
+def choose_filter(update, context):  # 1st in Conversation
+    global loaded_im_id
+    global filtered_im_id
     filter_type = update.message.text
+    fid = 0
     if filter_type == '👽Другой мир 1':
-        pass
+        fid = 1
     elif filter_type == '👽Другой мир 2':
-        pass
+        fid = 2
     elif filter_type == '⚽️Чёрно-белое 1':
-        pass
+        fid = 3
     elif filter_type == '🖲 Негатив':
-        pass
+        fid = 4
     elif filter_type == '💡Высветление':
-        pass
+        fid = 5
     elif filter_type == '🌌Размытие':
-        pass
+        fid = 6
     elif filter_type == '📈Увеличение резкости':
-        pass
+        fid = 7
     elif filter_type == '📉Уменьшение качества':
-        pass
+        fid = 8
     elif filter_type == '🔊Добавление шума':
-        pass
+        fid = 9
     elif filter_type == '🏺Ретро':
-        pass
+        fid = 10
     elif filter_type == '⚫️⚪️Чёрно-белое 2':
-        pass
+        fid = 11
+    elif filter_type == '👽Другой мир 3':
+        fid = 12
+    elif filter_type == '👽Другой мир 4':
+        fid = 13
     else:
         update.message.reply_text('Воспользуетесь клавиатурой')
         reply_keyboard = [['👽Другой мир 1', '👽Другой мир 2', '⚽️Чёрно-белое 1'],
                           ['🖲 Негатив', '💡Высветление', '🌌Размытие'],
                           ['📈Увеличение резкости', '📉Уменьшение качества', '🔊Добавление шума'],
-                          ['🏺Ретро', '⚫️⚪️Чёрно-белое 2']]
+                          ['🏺Ретро', '⚫️⚪️Чёрно-белое 2', '👽Другой мир 3'], ['👽Другой мир 4']]
         markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True)
         update.message.reply_text('Выберите фильтр:', reply_markup=markup)
-        return 2
-    update.message.reply_text('Хотите сохранить фотографию?')
+        return 1
+    update.message.reply_text('Фото обрабатывается...')
+    imid = loaded_im_id[update.message.chat_id]
+    response = get(f'{config.API_ADDRESS}/api/images/{imid}?action=applyfilter&fid={fid}').json()
+    if not response or response.get('error'):
+        logging.error(f'During /image API\'s sent error: {response.get("error")}')
+        update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
+                                  'скоро все наладится!')
+        return ConversationHandler.END
+    file = base64.b64decode(response['Image'].get('data'))
+    filtered_im_id[update.message.chat_id] = response['Image']['id']
+    updater.bot.sendPhoto(update.message.chat_id, BytesIO(file))
     reply_keyboard = [['✅Да', '❌Нет']]
     markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True)
-    update.message.reply_text('Выберите ответ:', reply_markup=markup)
-    return 3
+    update.message.reply_text('Хотите сохранить фотографию?', reply_markup=markup)
+    return 2
 
 
-def save_image_to_room(update, context):  # 3rd in Conversation
+def save_image_to_room(update, context):  # 2nd in Conversation
     ans = update.message.text
     if ans.lower() == 'да' or ans == '✅Да':
         global current_rooms
         global fit_rooms
+        global filtered_im_id
         session = db_session.create_session()
         user_id = session.query(User).filter(User.chat_id == str(update.message.chat_id)).first().mainid
         user = get(f'{config.API_ADDRESS}/api/users/{user_id}').json()
@@ -459,6 +514,7 @@ def save_image_to_room(update, context):  # 3rd in Conversation
             update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
                                       'скоро все наладится!')
             return ConversationHandler.END
+        update.message.reply_text('👾Открываю список комнат...')
         rooms = user['User'].get('rooms')
         text = '<b>🔢Выберите комнату (здесь показаны только подходящие комнаты)</b>:\n'
         current_rooms[update.message.chat_id] = []
@@ -474,10 +530,16 @@ def save_image_to_room(update, context):  # 3rd in Conversation
                 text += f" <b>{cnt}</b>: " + room['Room'].get('name') + '\n'
                 cnt += 1
                 current_rooms[update.message.chat_id].append(room)
+        cnt = 1
         if cnt == 1:
             fit_rooms[update.message.chat_id] = 0
-            update.message.reply_text("🙅‍♂️Нет доступных комнат. Создайте новую.")
-            return 5  # (add room) - Исправить (в диалог добавить функцию add_room из другого диалога)
+            if len(current_rooms[update.message.chat_id]) < config.USER_ROOM_LIMIT:
+                update.message.reply_text("🙅‍♂️Нет доступных комнат. Давайте создадим новую! Введите название:")
+                return 4
+            else:
+                update.message.reply_text("🙅‍♂️Нет доступных комнат, у вас слишком много комнат, невозможно сохранить "
+                                          "изображение")
+                return ConversationHandler.END
         else:
             cnt = cnt - 1
             fit_rooms[update.message.chat_id] = cnt
@@ -497,18 +559,71 @@ def save_image_to_room(update, context):  # 3rd in Conversation
                         line.append(str(i * 3 + j))
                     reply_keyboard.append(line)
             markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True)
-            update.message.reply_text(text, reply_markup=markup)
-            return 4
+            update.message.reply_text(text, reply_markup=markup, parse_mode=ParseMode.HTML)
+            return 3
     else:
+        global start_text
+        iid = filtered_im_id.get(update.message.chat_id)
+        response = delete(f'{config.API_ADDRESS}/api/images{iid}').json()
+        if not response:
+            logging.warning('During delete-request for filtered image error on API happened')
+        home_menu(update)
         return ConversationHandler.END
 
 
-def choose_room(update, context):  # 4th in Context
+def choose_room(update, context):  # 3rd in Conversation
     global fit_rooms
+    global filtered_im_id
+    global current_rooms
+    global start_text
     num = update.message.text
-    if num not in list(str(i) for i in range(1, len(fit_rooms[update.message.chat_id]))):
+    if num not in list(str(i) for i in range(1, fit_rooms[update.message.chat_id] + 1)):
         update.message.reply_text(f'🔢Введите номер комнаты')
-        return 4
+        return 3
+    num = int(num)
+    room = current_rooms[update.message.chat_id][num - 1]
+    response = put(f'{config.API_ADDRESS}/api/images/{filtered_im_id[update.message.chat_id]}', json={
+        'room_id': room['Room']['id']}).json()
+    if not response or response.get('error'):
+        logging.error(f'During /rooms API\'s sent error: {response.get("error")}')
+        update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
+                                  'скоро все наладится!')
+        return ConversationHandler.END
+    name = room['Room']['name']
+    update.message.reply_text(f'✅Изображение успешно добавлено в комнату {name}')
+    home_menu(update)
+    return ConversationHandler.END
+
+
+def add_room_with_image(update, context):  # 4th in Conversation
+    global filtered_im_id
+    global start_text
+    name = update.message.text
+    session = db_session.create_session()
+    user_id = session.query(User).filter(User.chat_id == str(update.message.chat_id)).first().mainid
+    lii = filtered_im_id.get(update.message.chat_id)
+    response = post(f'{config.API_ADDRESS}/api/rooms', json={'name': name, 'users_id': str(user_id)}).json()
+    if not response or response.get('error'):
+        logging.error(f'During /rooms API\'s sent error: {response.get("error")}')
+        update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
+                                  'скоро все наладится!')
+        return ConversationHandler.END
+    else:
+        response = put(f'{config.API_ADDRESS}/api/images/{lii}', json={'room_id': response['id']}).json()
+        if not response or response.get('error'):
+            logging.error(f'During /rooms API\'s sent error: {response.get("error")}')
+            update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
+                                      'скоро все наладится!')
+            return ConversationHandler.END
+        update.message.reply_text('✅Комната успешно создана, фото добавлено!')
+        home_menu(update)
+        return ConversationHandler.END
+
+
+def home(update, context):
+    global start_text
+    home_menu(update)
+    return ConversationHandler.END
 
 
 def main():
@@ -542,7 +657,8 @@ def main():
         states={
             1: [MessageHandler(Filters.text, choose_filter)],
             2: [MessageHandler(Filters.text, save_image_to_room)],
-            3: [MessageHandler(Filters.text, choose_room)]
+            3: [MessageHandler(Filters.text, choose_room)],
+            4: [MessageHandler(Filters.text, add_room_with_image)]
         },
 
         fallbacks=[CommandHandler('home', home)]
@@ -552,7 +668,14 @@ def main():
     dp.add_handler(rooms_conv_handler)
     dp.add_handler(image_conv_handler)
     updater.start_polling()
-
+    session = db_session.create_session()
+    global start_text
+    all_users = session.query(User).all()
+    reply_keyboard = [['/rooms', '/help']]
+    markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True)
+    for user in all_users:
+        updater.bot.send_message(user.chat_id, start_text, parse_mode=ParseMode.HTML, reply_markup=markup)
+    del all_users
     updater.idle()
 
 

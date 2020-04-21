@@ -42,23 +42,24 @@ class RoomsResource(Resource):
         args = parser.parse_args()
         if args.get('name'):
             room.name = args.get('name')
-        for userid in args.get('users_id').split(' '):
-            user = session.query(User).get(int(userid))
-            if not user:
-                raise exceptions.NotFound
-            if args.get('remove_user') == True:
-                if user in room.users:
-                    room.users.remove(user)
-                else:
+        if args.get('users_id'):
+            for userid in args.get('users_id').split(' '):
+                user = session.query(User).get(int(userid))
+                if not user:
                     raise exceptions.NotFound
-            else:
-                if len(room.users) < config.ROOM_USER_LIMIT:
-                    if len(user.rooms) < config.USER_ROOM_LIMIT:
-                        room.users.append(user)
+                if args.get('remove_user') == True:
+                    if user in room.users:
+                        room.users.remove(user)
+                    else:
+                        raise exceptions.NotFound
+                else:
+                    if len(room.users) < config.ROOM_USER_LIMIT:
+                        if len(user.rooms) < config.USER_ROOM_LIMIT:
+                            room.users.append(user)
+                        else:
+                            raise exceptions.Forbidden  # временно
                     else:
                         raise exceptions.Forbidden  # временно
-                else:
-                    raise exceptions.Forbidden  # временно
         session.commit()
         return jsonify({'success': 'OK'})
 
@@ -81,23 +82,24 @@ class RoomsListResource(Resource):
         room = Room(
             name=args.get('name')
         )
-        for userid in args.get('users_id').split(' '):
-            user = session.query(User).get(int(userid))
-            if not user:
-                raise exceptions.NotFound
-            if args.get('remove_user') == True:
-                if user in room.users:
-                    room.users.remove(user)
-                else:
+        if args.get('users_id'):
+            for userid in args.get('users_id').split(' '):
+                user = session.query(User).get(int(userid))
+                if not user:
                     raise exceptions.NotFound
-            else:
-                if len(room.users) < config.ROOM_USER_LIMIT:
-                    if len(user.rooms) < config.USER_ROOM_LIMIT:
-                        room.users.append(user)
+                if args.get('remove_user') == True:
+                    if user in room.users:
+                        room.users.remove(user)
+                    else:
+                        raise exceptions.NotFound
+                else:
+                    if len(room.users) < config.ROOM_USER_LIMIT:
+                        if len(user.rooms) < config.USER_ROOM_LIMIT:
+                            room.users.append(user)
+                        else:
+                            raise exceptions.Forbidden  # временно
                     else:
                         raise exceptions.Forbidden  # временно
-                else:
-                    raise exceptions.Forbidden  # временно
         session.add(room)
         session.commit()
-        return jsonify({'success': 'OK'})
+        return jsonify({'success': 'OK', 'id': room.id})
