@@ -6,7 +6,7 @@ from . import images_parser
 import config
 
 from flask import jsonify, request
-from flask_restful import Resource
+from flask_restful import Resource, abort
 from werkzeug import exceptions
 
 import base64
@@ -26,6 +26,7 @@ images_parser = images_parser.parser
 
 class ImagesResource(Resource):
     def get(self, image_id):
+        abort(404, error="hey bro")
         args = request.args
         session = db_session.create_session()
         image = session.query(Image).get(image_id)  # image должен быть файлом
@@ -37,20 +38,23 @@ class ImagesResource(Resource):
                 res_image = filters.add_filter(image, request.args['fid'], image.mime)
             except Exception as e:
                 logging.error(f'During filtering Image with id {image_id} error in filters.py happened. Error: {e}')
+                raise exceptions.NotFound
+            now = datetime.now().strftime('%H%M%S-%d%m%Y')
+            path = f'static/img/{now}.{image.mime.lower()}'
+            new_im = Image()
+            new_im.path = path
+            new_im.name = now
+            new_im.mime = image.mime
+            res_image.save(path)
+            session.add(new_im)
+            session.commit()
+            with open(path, 'rb') as f:
+                string_data = base64.b64encode(f.read()).decode('utf-8')
+            return jsonify({'Image': {'id': new_im.id, 'data': string_data, 'name': name}})
         else:
-            res_image = PilImage.open(image.path)
-        now = datetime.now().strftime('%H%M%S-%d%m%Y')
-        path = f'static/img/{now}.{image.mime.lower()}'
-        new_im = Image()
-        new_im.path = path
-        new_im.name = now
-        new_im.mime = image.mime
-        res_image.save(path)
-        session.add(new_im)
-        session.commit()
-        with open(path, 'rb') as f:
-            string_data = base64.b64encode(f.read()).decode('utf-8')
-        return jsonify({'Image': {'id': new_im.id, 'data': string_data, 'name': name}})
+            with open(image.path, 'rb') as f:
+                string_data = base64.b64encode(f.read()).decode('utf-8')
+            return jsonify({'Image': {'id': image.id, 'data': string_data, 'name': image.name}})
 
     def delete(self, image_id):
         session = db_session.create_session()

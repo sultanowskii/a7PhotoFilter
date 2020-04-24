@@ -13,6 +13,8 @@ from werkzeug import exceptions
 import logging
 from datetime import datetime
 
+import requests
+
 logging.basicConfig(
     filename='logs.log',
     format='%(asctime)s %(levelname)s %(name)s %(message)s'
@@ -64,7 +66,9 @@ def start(update, context):
                                       " 😽 Приятного использования!", reply_markup=markup)
         else:
             err = response.get('error')
-            update.message.reply_text(f'Ошибка сервера! {err}')
+            update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
+                                      'скоро все наладится!')
+            return home(update, context)
     else:
         name = user.name
         update.message.reply_text(f"Привет, {name}! 👋\n"
@@ -95,27 +99,48 @@ def help(update, context):
 
 def show_rooms(update, context, refresh=True):  # Function to show all users' rooms. 'Refresh' is needing or not to
     # update rooms-list (to make it works faster)
+    update.message.reply_text('👾Открываю список комнат...')
     text = '🏫<b>Ваши комнаты</b>:\n'
     if refresh:
         session = db_session.create_session()
         user_id = session.query(User).filter(User.chat_id == str(update.message.chat_id)).first().mainid
-        user = get(f'{config.API_ADDRESS}/api/users/{user_id}').json()
-        if user.get('error'):
+        user = None
+        for k in range(3):
+            try:
+                user = get(f'{config.API_ADDRESS}/api/users/{user_id}', timeout=3).json()
+                break
+            except requests.exceptions.ConnectionError:
+                if k < 2:
+                    continue
+                logging.fatal(f'Server is unreachable')
+                update.message.reply_text('😿Сервер недоступен.\n\nСвязь с разработчиками: @a7ult, @gabidullin_kamil')
+                return home(update, context)
+        if not user or user.get('error'):
             logging.error(f'During /rooms API\'s sent error: {user.get("error")}')
             update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
                                       'скоро все наладится!')
-            return
+            return home(update, context)
         rooms = user['User'].get('rooms')
         global current_rooms
-        update.message.reply_text('👾Открываю список комнат...')
         current_rooms[update.message.chat_id] = []
         for i in range(len(rooms)):
-            room = get(f'{config.API_ADDRESS}/api/rooms/{rooms[i]}').json()
+            room = None
+            for k in range(3):
+                try:
+                    room = get(f'{config.API_ADDRESS}/api/rooms/{rooms[i]}', timeout=3).json()
+                    break
+                except requests.exceptions.ConnectionError:
+                    if k < 2:
+                        continue
+                    logging.fatal(f'Server is unreachable')
+                    update.message.reply_text('😿Сервер недоступен.\n\nСвязь с разработчиками: @a7ult, '
+                                              '@gabidullin_kamil!')
+                    return home(update, context)
             if not room or room.get('error'):
                 logging.error(f'During /rooms API\'s sent error: {room.get("error")}')
                 update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
                                           'скоро все наладится!')
-                return ConversationHandler.END
+                return home(update, context)
             text += f" <b>{i + 1}</b>: " + room['Room'].get('name') + '\n'
             current_rooms[update.message.chat_id].append(room)
     else:
@@ -126,6 +151,7 @@ def show_rooms(update, context, refresh=True):  # Function to show all users' ro
                       ['📩Добавиться в комнату', '↩️Назад']]
     markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True)
     update.message.reply_text(text, parse_mode=ParseMode.HTML, reply_markup=markup)
+    return 1
 
 
 def show_room(update, context, num=None, refresh=True):  # Function to show user one current room, num is room's local
@@ -153,12 +179,23 @@ def show_room(update, context, num=None, refresh=True):  # Function to show user
         for i in range(len(images)):
             if images[i] == None:
                 continue
-            image = get(f'{config.API_ADDRESS}/api/images/{images[i]}').json()
+            image = None
+            for k in range(3):
+                try:
+                    image = get(f'{config.API_ADDRESS}/api/images/{images[i]}', timeout=3).json()
+                    break
+                except requests.exceptions.ConnectionError:
+                    if k < 2:
+                        continue
+                    logging.fatal(f'Server is unreachable')
+                    update.message.reply_text(
+                        '😿Сервер недоступен.\n\nСвязь с разработчиками: @a7ult, @gabidullin_kamil')
+                    return home(update, context)
             if not image or image.get('error'):
                 logging.error(f'During /rooms API\'s sent error: {image.get("error")}')
                 update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
                                           'скоро все наладится!')
-                return 1
+                return home(update, context)
             text += f" <b>{i + 1}</b>: " + image['Image'].get('name') + '\n'
             current_images[update.message.chat_id].append(image)
     else:
@@ -170,15 +207,14 @@ def show_room(update, context, num=None, refresh=True):  # Function to show user
                       ['↩️Назад']]
     markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True)
     update.message.reply_text(text, parse_mode=ParseMode.HTML, reply_markup=markup)
+    return 5
 
 
 def rooms(update, context):
-    show_rooms(update, context)
-    return 1
+    return show_rooms(update, context)
 
 
 def command_rooms(update, context):  # 1st in Covnersation
-    global start_text
     command = update.message.text
     if command == '🖍Добавить комнату':
         update.message.reply_text('📝Введите название комнаты:', reply_markup=ReplyKeyboardRemove())
@@ -204,11 +240,12 @@ def command_rooms(update, context):  # 1st in Covnersation
         update.message.reply_text('🔢Введите номер комнаты:', reply_markup=markup)
         return 3
     elif command == '📩Добавиться в комнату':
-        update.message.reply_text('📧 Введите код комнаты:', reply_markup=ReplyKeyboardRemove())
+        reply_keyboard = [['↩️Назад']]
+        markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True)
+        update.message.reply_text('📧 Введите код комнаты:', reply_markup=markup)
         return 4
     elif command == '↩️Назад':
-        home_menu(update)
-        return ConversationHandler.END
+        return home(update, context)
     else:
         session = db_session.create_session()
         username = ''
@@ -218,55 +255,84 @@ def command_rooms(update, context):  # 1st in Covnersation
         except:
             logging.warning(f'Unregistered user entered dialog. Chat_id: {chat_id}')
         update.message.reply_text(f'😿Извини, {username}я тебя не понял.\n\nНапиши /help, если тебе нужна помощь!')
-        return ConversationHandler.END
+        return home(update, context)
 
 
 def add_room(update, context):  # 2nd in Conversation
     name = update.message.text
     if name == '↩️Назад':
-        show_rooms(update, context, False)
-        return 1
+        return show_rooms(update, context, False)
     session = db_session.create_session()
     if len(current_rooms[update.message.chat_id]) < config.ROOM_IMAGE_LIMIT:
         user_id = session.query(User).filter(User.chat_id == str(update.message.chat_id)).first().mainid
-        response = post(f'{config.API_ADDRESS}/api/rooms', json={'name': name, 'users_id': str(user_id)}).json()
+        response = None
+        for k in range(3):
+            try:
+                response = post(f'{config.API_ADDRESS}/api/rooms', json={'name': name, 'users_id': str(user_id)},
+                                timeout=3).json()
+                break
+            except requests.exceptions.ConnectionError:
+                if k < 2:
+                    continue
+                logging.fatal(f'Server is unreachable')
+                update.message.reply_text('😿Сервер недоступен.\n\nСвязь с разработчиками: @a7ult, @gabidullin_kamil')
+                return home(update, context)
         if not response or response.get('error'):
             logging.error(f'During /rooms API\'s sent error: {response.get("error")}')
             update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
                                       'скоро все наладится!')
-            return
-        else:
-            update.message.reply_text('✅Комната успешно создана!')
-            show_rooms(update, context)
-            return 1
+            return home(update, context)
+        update.message.reply_text('✅Комната успешно создана!')
+        return show_rooms(update, context)
     else:
         update.message.reply_text('❗️У вас слишком много комнат.')
-        show_rooms(update, context, refresh=False)
-        return 1
+        return show_rooms(update, context, refresh=False)
 
 
 def room(update, context):  # 3rd in Conversation
-    show_room(update, context)
-    return 5
+    return show_room(update, context)
 
 
 def add_user_to_room(update, context):  # 4th in Conversation
-    rid, name = update.message.text.split('*')
-    rid = int(rid)
+    rid = ''
+    name = ''
+    if update.message.text == '↩️Назад':
+        return show_rooms(update, context)
+    try:
+        rid, name = update.message.text.split('*')
+        rid = int(rid)
+    except Exception as e:
+        reply_keyboard = [['↩️Назад']]
+        markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True)
+        update.message.reply_text('Введите корректный код!', reply_markup=markup)
+        return 4
     session = db_session.create_session()
     userid = session.query(User).filter(User.chat_id == update.message.chat_id).first().id
-    response = put(f'{config.API_ADDRESS}/api/rooms/{rid}', json={'users_id': userid}).json()
-    if response.get('success'):
-        updater.bot.send_message(update.message.chat_id, f'✅Вы были успешно добавлены в комнату \"{name}\"')
-        show_rooms(update, context)
-        return 1
-    elif response.get('error') == exceptions.Forbidden:
-        updater.bot.send_message(update.message.chat_id, f'🏚Эта комната переполнена!')
-    else:
+    response = None
+    for k in range(3):
+        try:
+            response = put(f'{config.API_ADDRESS}/api/rooms/{rid}', json={'users_id': userid}, timeout=3).json()
+            break
+        except requests.exceptions.ConnectionError:
+            if k < 2:
+                continue
+            logging.fatal(f'Server is unreachable')
+            update.message.reply_text('😿Сервер недоступен.\n\nСвязь с разработчиками: @a7ult, @gabidullin_kamil')
+            return home(update, context)
+    if not response:
         logging.error(f'During /rooms API\'s sent error: {response.get("error")}')
         update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
                                   'скоро все наладится!')
-        return 4
+        return home(update, context)
+    if response.get('error') == exceptions.Forbidden:
+        update.message.reply_text(f'🏚Эта комната переполнена!')
+    elif response.get('error'):
+        logging.error(f'During /rooms API\'s sent error: {response.get("error")}')
+        update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
+                                  'скоро все наладится!')
+        return home(update, context)
+    updater.bot.message.reply_text(f'✅Вы были успешно добавлены в комнату \"{name}\"')
+    return show_rooms(update, context)
 
 
 def command_room(update, context):  # 5th in Conversation
@@ -286,8 +352,7 @@ def command_room(update, context):  # 5th in Conversation
         code = f'{rid}*{name}'
         update.message.reply_text(f'📝Ваш друг должен ввести этот код: \n'
                                   f'<code>{code}</code>\nво вкладке "Добавиться в комнату"', parse_mode=ParseMode.HTML)
-        show_room(update, context, num=current_room[userid], refresh=False)
-        return 5
+        return show_room(update, context, num=current_room[userid], refresh=False)
     elif command == '🌄Открыть изображение':
         global current_images
         if current_images.get(userid):
@@ -312,11 +377,9 @@ def command_room(update, context):  # 5th in Conversation
             return 7
         else:
             update.message.reply_text('📄Эта комната пуста')
-            show_room(update, context, current_room[userid], False)
-            return 5
+            return show_room(update, context, current_room[userid], False)
     elif command == '↩️Назад':
-        show_rooms(update, context, refresh=False)
-        return 1
+        return show_rooms(update, context, refresh=False)
     elif command == '🚶‍♂️Выйти из комнаты':
         reply_keyboard = [['✅Да', '❌Нет']]
         markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True)
@@ -331,27 +394,35 @@ def command_room(update, context):  # 5th in Conversation
         except:
             logging.warning(f'Unregistered user entered dialog. Chat_id: {chat_id}')
         update.message.reply_text(f'😿Извини, {username}я тебя не понял.\n\nНапиши /help, если тебе нужна помощь!')
-        return ConversationHandler.END
+        return home(update, context)
 
 
 def delete_room(update, context):  # 6th in covnersation
-    response = update.message.text
-    if response == '✅Да' or response.lower() == 'да':
+    answer = update.message.text
+    if answer == '✅Да' or answer.lower() == 'да':
         global current_rooms
         global current_room
         userid = update.message.chat_id
         rid = current_rooms[userid][current_room[userid]]['Room']['id']
-        response = delete(f'{config.API_ADDRESS}/api/rooms/{rid}').json()
-        if not response:
+        response = None
+        for k in range(3):
+            try:
+                response = delete(f'{config.API_ADDRESS}/api/rooms/{rid}', timeout=3).json()
+                break
+            except requests.exceptions.ConnectionError:
+                if k < 2:
+                    continue
+                logging.fatal(f'Server is unreachable')
+                update.message.reply_text('😿Сервер недоступен.\n\nСвязь с разработчиками: @a7ult, @gabidullin_kamil')
+                return home(update, context)
+        if not response or response.get('error'):
             logging.error(f'During /rooms API\'s sent error: {response.get("error")}')
             update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
                                       'скоро все наладится!')
-            return 6
+            return home(update, context)
         update.message.reply_text('ℹ️Комната была успешно удалена!')
-        show_rooms(update, context)
-    else:
-        show_rooms(update, context, False)
-    return 1
+        return show_rooms(update, context)
+    return show_rooms(update, context, False)
 
 
 def image(update, context):  # 7th in Conversation
@@ -397,7 +468,7 @@ def command_image(update, context):  # 8th in Conversation
         except:
             logging.warning(f'Unregistered user entered dialog. Chat_id: {chat_id}')
         update.message.reply_text(f'😿Извини, {username}я тебя не понял.\n\nНапиши /help, если тебе нужна помощь!')
-        return ConversationHandler.END
+        return home(update, context)
 
 
 def delete_image(update, context):  # 9th in Conversation
@@ -409,20 +480,97 @@ def delete_image(update, context):  # 9th in Conversation
     if response == '✅Да' or response.lower() == 'да':
         userid = update.message.chat_id
         iid = current_images[userid][current_image[userid]]['Image'].get('id')
-        response = delete(f'{config.API_ADDRESS}/api/images/{iid}').json()
+        response = None
+        for k in range(3):
+            try:
+                response = delete(f'{config.API_ADDRESS}/api/images/{iid}', timeout=3).json()
+                break
+            except requests.exceptions.ConnectionError:
+                if k < 2:
+                    continue
+                logging.fatal(f'Server is unreachable')
+                update.message.reply_text('😿Сервер недоступен.\n\nСвязь с разработчиками: @a7ult, @gabidullin_kamil')
+                return home(update, context)
         rid = current_rooms[userid][current_room[userid]]['Room']['id']
-        current_rooms[userid][current_room[userid]] = get(f'{config.API_ADDRESS}/api/rooms/{rid}').json()
+        for k in range(3):
+            try:
+                current_rooms[userid][current_room[userid]] = get(f'{config.API_ADDRESS}/api/rooms/{rid}',
+                                                                  timeout=3).json()
+                break
+            except requests.exceptions.ConnectionError:
+                if k < 2:
+                    continue
+                logging.fatal(f'Server is unreachable')
+                update.message.reply_text('😿Сервер недоступен.\n\nСвязь с разработчиками: @a7ult, @gabidullin_kamil')
+                return home(update, context)
         current_images[userid][current_image[userid]] = None
         if not response or response.get('error'):
             logging.error(f'During /rooms API\'s sent error: {response.get("error")}')
             update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
                                       'скоро все наладится!')
-            return 9
+            return home(update, context)
         update.message.reply_text('ℹ️Изображение было успешно удалено!')
-        show_room(update, context, current_room[update.message.chat_id])
+        return show_room(update, context, current_room[update.message.chat_id])
+    return show_room(update, context, current_room[update.message.chat_id], refresh=False)
+
+
+def leave_the_room(update, context):  # 10 in Conversation
+    ans = update.message.text
+    if ans == '✅Да':
+        global current_rooms
+        global current_room
+        room = current_rooms[update.message.chat_id][current_room[update.message.chat_id]].get('Room')
+        rid = room.get('id')
+        room_name = room.get('name')
+        session = db_session.create_session()
+        userid = session.query(User).filter(User.chat_id == update.message.chat_id).first().id
+        response = None
+        for k in range(3):
+            try:
+                response = put(f'{config.API_ADDRESS}/api/rooms/{rid}', json={'users_id': userid,
+                                                                              'remove_user': True}, timeout=3).json()
+                break
+            except requests.exceptions.ConnectionError:
+                if k < 2:
+                    continue
+                logging.fatal(f'Server is unreachable')
+                update.message.reply_text('😿Сервер недоступен.\n\nСвязь с разработчиками: @a7ult, @gabidullin_kamil')
+                return home(update, context)
+        if not response or response.get('error'):
+            logging.error(f'During /rooms API\'s sent error: {response.get("error")}')
+            update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
+                                      'скоро все наладится!')
+            return home(update, context)
+        update.message.reply_text(f'✅Вы успешно покинули комнату \"{room_name}\"')
+        return show_rooms(update, context)
     else:
-        show_room(update, context, current_room[update.message.chat_id], refresh=False)
-    return 5
+        return show_room(update, context, num=current_room[update.message.chat_id])
+
+
+def change_the_name_of_the_photo(update, context):  # 11 in Conversation
+    global current_image
+    global current_images
+    new_name = update.message.text
+    info = current_images[update.message.chat_id][current_image[update.message.chat_id]].get('Image')
+    image_id = info.get('id')
+    response = None
+    for k in range(3):
+        try:
+            response = put(f'{config.API_ADDRESS}/api/images/{image_id}', json={'name': new_name}, timeout=3).json()
+            break
+        except requests.exceptions.ConnectionError:
+            if k < 2:
+                continue
+            logging.fatal(f'Server is unreachable')
+            update.message.reply_text('😿Сервер недоступен.\n\nСвязь с разработчиками: @a7ult, @gabidullin_kamil')
+            return home(update, context)
+    if not response or response.get('error'):
+        logging.error(f'During /rooms API\'s sent error: {response.get("error")}')
+        update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
+                                  'скоро все наладится!')
+        return home(update, context)
+    update.message.reply_text(f'✅Вы были успешно поменяли название изображения. Новое название: \"{new_name}\"')
+    return show_room(update, context, num=current_room[update.message.chat_id])
 
 
 def image_get(update, context):
@@ -440,13 +588,23 @@ def image_get(update, context):
            ' 💡Высветление \n 🌌Размытие\n 📈Увеличение резкости\n 📉Уменьшение качества\n 🔊Добавление шума\n 🏺Ретро' \
            '\n ⚫️⚪️Чёрно-белое 2\n 👽Другой мир 3\n 👽Другой мир 4'
     now = datetime.now().strftime('%H%M%S-%d%m%Y')
-    response = post(f'{config.API_ADDRESS}/api/images',
-                    json={'name': now, 'mime': mime, 'image_data': base64_data}).json()
-    if response.get('success') == None:
+    response = None
+    for k in range(3):
+        try:
+            response = post(f'{config.API_ADDRESS}/api/images',
+                            json={'name': now, 'mime': mime, 'image_data': base64_data}, timeout=3).json()
+            break
+        except requests.exceptions.ConnectionError:
+            if k < 2:
+                continue
+            logging.fatal(f'Server is unreachable')
+            update.message.reply_text('😿Сервер недоступен.\n\nСвязь с разработчиками: @a7ult, @gabidullin_kamil')
+            return home(update, context)
+    if not response or response.get('error'):
         logging.error(f'During /image API\'s sent error: {response.get("error")}')
         update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
                                   'скоро все наладится!')
-        return ConversationHandler.END
+        return home(update, context)
     iid = int(response.get('id'))
     loaded_im_id[update.message.chat_id] = iid
     update.message.reply_text(text, reply_markup=markup, parse_mode=ParseMode.HTML)
@@ -495,12 +653,22 @@ def choose_filter(update, context):  # 1st in Conversation
         return 1
     update.message.reply_text('Фото обрабатывается...')
     imid = loaded_im_id[update.message.chat_id]
-    response = get(f'{config.API_ADDRESS}/api/images/{imid}?action=applyfilter&fid={fid}').json()
+    response = None
+    for k in range(3):
+        try:
+            response = get(f'{config.API_ADDRESS}/api/images/{imid}?action=applyfilter&fid={fid}', timeout=3).json()
+            break
+        except requests.exceptions.ConnectionError:
+            if k < 2:
+                continue
+            logging.fatal(f'Server is unreachable')
+            update.message.reply_text('😿Сервер недоступен.\n\nСвязь с разработчиками: @a7ult, @gabidullin_kamil')
+            return home(update, context)
     if not response or response.get('error'):
         logging.error(f'During /image API\'s sent error: {response.get("error")}')
         update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
                                   'скоро все наладится!')
-        return ConversationHandler.END
+        return home(update, context)
     file = base64.b64decode(response['Image'].get('data'))
     filtered_im_id[update.message.chat_id] = response['Image']['id']
     updater.bot.sendPhoto(update.message.chat_id, BytesIO(file))
@@ -518,24 +686,45 @@ def save_image_to_room(update, context):  # 2nd in Conversation
         global filtered_im_id
         session = db_session.create_session()
         user_id = session.query(User).filter(User.chat_id == str(update.message.chat_id)).first().mainid
-        user = get(f'{config.API_ADDRESS}/api/users/{user_id}').json()
+        user = None
+        for k in range(3):
+            try:
+                user = get(f'{config.API_ADDRESS}/api/users/{user_id}', timeout=3).json()
+                break
+            except requests.exceptions.ConnectionError:
+                if k < 2:
+                    continue
+                logging.fatal(f'Server is unreachable')
+                update.message.reply_text('😿Сервер недоступен.\n\nСвязь с разработчиками: @a7ult, @gabidullin_kamil')
+                return home(update, context)
         if not user or user.get('error'):
             logging.error(f'During /rooms API\'s sent error: {user.get("error")}')
             update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
                                       'скоро все наладится!')
-            return ConversationHandler.END
+            return home(update, context)
         update.message.reply_text('👾Открываю список комнат...')
         rooms = user['User'].get('rooms')
         text = '<b>🔢Выберите комнату (здесь показаны только подходящие комнаты)</b>:\n'
         current_rooms[update.message.chat_id] = []
         cnt = 1
         for i in range(len(rooms)):
-            room = get(f'{config.API_ADDRESS}/api/rooms/{rooms[i]}').json()
+            room = None
+            for k in range(3):
+                try:
+                    room = get(f'{config.API_ADDRESS}/api/rooms/{rooms[i]}', timeout=3).json()
+                    break
+                except requests.exceptions.ConnectionError:
+                    if k < 2:
+                        continue
+                    logging.fatal(f'Server is unreachable')
+                    update.message.reply_text(
+                        '😿Сервер недоступен.\n\nСвязь с разработчиками: @a7ult, @gabidullin_kamil')
+                    return home(update, context)
             if not room or room.get('error'):
                 logging.error(f'During /rooms API\'s sent error: {room.get("error")}')
                 update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного,'
                                           'скоро все наладится!')
-                return ConversationHandler.END
+                return home(update, context)
             if len(room['Room']['images']) < config.ROOM_IMAGE_LIMIT:
                 text += f" <b>{cnt}</b>: " + room['Room'].get('name') + '\n'
                 cnt += 1
@@ -549,7 +738,7 @@ def save_image_to_room(update, context):  # 2nd in Conversation
             else:
                 update.message.reply_text("🙅‍♂️Нет доступных комнат, у вас слишком много комнат, невозможно сохранить "
                                           "изображение")
-                return ConversationHandler.END
+                return home(update, context)
         else:
             cnt = cnt - 1
             fit_rooms[update.message.chat_id] = cnt
@@ -572,33 +761,50 @@ def save_image_to_room(update, context):  # 2nd in Conversation
             update.message.reply_text(text, reply_markup=markup, parse_mode=ParseMode.HTML)
             return 3
     else:
-        global start_text
         iid = filtered_im_id.get(update.message.chat_id)
-        response = delete(f'{config.API_ADDRESS}/api/images{iid}').json()
-        if not response:
+        response = None
+        for k in range(3):
+            try:
+                response = delete(f'{config.API_ADDRESS}/api/images{iid}', timeout=3).json()
+                break
+            except requests.exceptions.ConnectionError:
+                if k < 2:
+                    continue
+                logging.fatal(f'Server is unreachable')
+                update.message.reply_text('😿Сервер недоступен.\n\nСвязь с разработчиками: @a7ult, @gabidullin_kamil')
+                return home(update, context)
+        if not response or response.get('error'):
             logging.warning('During delete-request for filtered image error on API happened')
-        home_menu(update)
-        return ConversationHandler.END
+        return home(update, context)
 
 
 def choose_room(update, context):  # 3rd in Conversation
     global fit_rooms
     global filtered_im_id
     global current_rooms
-    global start_text
     num = update.message.text
     if num not in list(str(i) for i in range(1, fit_rooms[update.message.chat_id] + 1)):
         update.message.reply_text(f'🔢Введите номер комнаты')
         return 3
     num = int(num)
     room = current_rooms[update.message.chat_id][num - 1]
-    response = put(f'{config.API_ADDRESS}/api/images/{filtered_im_id[update.message.chat_id]}', json={
-        'room_id': room['Room']['id']}).json()
+    response = None
+    for k in range(3):
+        try:
+            response = put(f'{config.API_ADDRESS}/api/images/{filtered_im_id[update.message.chat_id]}', json={
+                'room_id': room['Room']['id']}, timeout=3).json()
+            break
+        except requests.exceptions.ConnectionError:
+            if k < 2:
+                continue
+            logging.fatal(f'Server is unreachable')
+            update.message.reply_text('😿Сервер недоступен.\n\nСвязь с разработчиками: @a7ult, @gabidullin_kamil')
+            return home(update, context)
     if not response or response.get('error'):
         logging.error(f'During /rooms API\'s sent error: {response.get("error")}')
         update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
                                   'скоро все наладится!')
-        return ConversationHandler.END
+        return home(update, context)
     name = room['Room']['name']
     update.message.reply_text(f'✅Изображение успешно добавлено в комнату {name}')
     update.message.reply_text('🔠Введите название изображения')
@@ -607,24 +813,45 @@ def choose_room(update, context):  # 3rd in Conversation
 
 def add_room_with_image(update, context):  # 4th in Conversation
     global filtered_im_id
-    global start_text
     name = update.message.text
     session = db_session.create_session()
     user_id = session.query(User).filter(User.chat_id == str(update.message.chat_id)).first().mainid
     lii = filtered_im_id.get(update.message.chat_id)
-    response = post(f'{config.API_ADDRESS}/api/rooms', json={'name': name, 'users_id': str(user_id)}).json()
+    response = None
+    for k in range(3):
+        try:
+            response = post(f'{config.API_ADDRESS}/api/rooms', json={'name': name, 'users_id': str(user_id)},
+                            timeout=3).json()
+            break
+        except requests.exceptions.ConnectionError:
+            if k < 2:
+                continue
+            logging.fatal(f'Server is unreachable')
+            update.message.reply_text('😿Сервер недоступен.\n\nСвязь с разработчиками: @a7ult, @gabidullin_kamil')
+            return home(update, context)
     if not response or response.get('error'):
         logging.error(f'During /rooms API\'s sent error: {response.get("error")}')
         update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
                                   'скоро все наладится!')
-        return ConversationHandler.END
+        return home(update, context)
     else:
-        response = put(f'{config.API_ADDRESS}/api/images/{lii}', json={'room_id': response['id']}).json()
+        response = None
+        for k in range(3):
+            try:
+                response = put(f'{config.API_ADDRESS}/api/images/{lii}', json={'room_id': response['id']},
+                               timeout=3).json()
+                break
+            except requests.exceptions.ConnectionError:
+                if k < 2:
+                    continue
+                logging.fatal(f'Server is unreachable')
+                update.message.reply_text('😿Сервер недоступен.\n\nСвязь с разработчиками: @a7ult, @gabidullin_kamil')
+                return home(update, context)
         if not response or response.get('error'):
             logging.error(f'During /rooms API\'s sent error: {response.get("error")}')
             update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
                                       'скоро все наладится!')
-            return ConversationHandler.END
+            return home(update, context)
         update.message.reply_text('✅Комната успешно создана, фото добавлено!')
         update.message.reply_text('🔠Введите название изображения')
         return 5
@@ -634,64 +861,29 @@ def set_name_to_image(update, context):  # 5th in Conversation
     global filtered_im_id
     name = update.message.text
     fii = filtered_im_id.get(update.message.chat_id)
-    response = put(f'{config.API_ADDRESS}/api/images/{fii}', json={'name': name}).json()
+    response = None
+    for k in range(3):
+        try:
+            response = put(f'{config.API_ADDRESS}/api/images/{fii}', json={'name': name}, timeout=3).json()
+            break
+        except requests.exceptions.ConnectionError:
+            if k < 2:
+                continue
+            logging.fatal(f'Server is unreachable')
+            update.message.reply_text('😿Сервер недоступен.\n\nСвязь с разработчиками: @a7ult, @gabidullin_kamil')
+            return home(update, context)
     if not response or response.get('error'):
         logging.error(f'During /rooms API\'s sent error: {response.get("error")}')
         update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
                                   'скоро все наладится!')
-        return ConversationHandler.END
+        return home(update, context)
     update.message.reply_text('✅Успешно!')
-    home_menu(update)
-    return ConversationHandler.END
+    return home(update, context)
 
 
 def home(update, context):
-    global start_text
     home_menu(update)
     return ConversationHandler.END
-
-
-def leave_the_room(update, context):  # 10 in Conversation
-    ans = update.message.text
-    if ans == '✅Да':
-        global current_rooms
-        global current_room
-        room = current_rooms[update.message.chat_id][current_room[update.message.chat_id]].get('Room')
-        rid = room.get('id')
-        room_name = room.get('name')
-        session = db_session.create_session()
-        userid = session.query(User).filter(User.chat_id == update.message.chat_id).first().id
-        response = put(f'{config.API_ADDRESS}/api/rooms/{rid}', json={'users_id': userid, 'remove_user': True}).json()
-        if response.get('success'):
-            update.message.reply_text(f'✅Вы были успешно покинули комнату \"{room_name}\"')
-            show_rooms(update, context)
-            return 1
-        else:
-            logging.error(f'During /rooms API\'s sent error: {response.get("error")}')
-            update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
-                                      'скоро все наладится!')
-            return ConversationHandler.END
-    else:
-        show_room(update, context)
-        return 5
-
-
-def change_the_name_of_the_photo(update, context):  # 11 in Conversation
-    global current_image
-    global current_images
-    new_name = update.message.text
-    info = current_images[update.message.chat_id][current_image[update.message.chat_id]].get('Image')
-    image_id = info.get('id')
-    response = put(f'{config.API_ADDRESS}/api/images/{image_id}', json={'name': new_name}).json()
-    if response.get('success'):
-        update.message.reply_text(f'✅Вы были успешно поменяли название изображения. Новое название: \"{new_name}\"')
-        show_room(update, context)
-        return 5
-    else:
-        logging.error(f'During /rooms API\'s sent error: {response.get("error")}')
-        update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
-                                  'скоро все наладится!')
-        return ConversationHandler.END
 
 
 def main():

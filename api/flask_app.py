@@ -24,15 +24,5 @@ def main():
     app.run()
 
 
-@app.errorhandler(exceptions.NotFound)
-def not_found(error):
-    return make_response(jsonify({'error': 'Not found'}), 404)
-
-
-@app.errorhandler(exceptions.BadRequest)
-def not_found(error):
-    return make_response(jsonify({'error': 'Bad request'}), 400)
-
-
 if __name__ == "__main__":  # убери на сервере
     main()
