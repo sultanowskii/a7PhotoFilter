@@ -26,7 +26,6 @@ images_parser = images_parser.parser
 
 class ImagesResource(Resource):
     def get(self, image_id):
-        abort(404, error="hey bro")
         args = request.args
         session = db_session.create_session()
         image = session.query(Image).get(image_id)  # image должен быть файлом
