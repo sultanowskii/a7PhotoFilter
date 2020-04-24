@@ -166,7 +166,8 @@ def show_room(update, context, num=None, refresh=True):  # Function to show user
         for i in range(len(images)):
             text += f" <b>{i + 1}</b>: " + images[i]['Image'].get('name') + '\n'
     reply_keyboard = [['❌Удалить комнату', '📣Пригласить людей'],
-                      ['🌄Открыть изображение', '↩️Назад']]
+                      ['🌄Открыть изображение', '🚶‍♂️Выйти из комнаты'],
+                      ['↩️Назад']]
     markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True)
     update.message.reply_text(text, parse_mode=ParseMode.HTML, reply_markup=markup)
 
@@ -316,6 +317,11 @@ def command_room(update, context):  # 5th in Conversation
     elif command == '↩️Назад':
         show_rooms(update, context, refresh=False)
         return 1
+    elif command == '🚶‍♂️Выйти из комнаты':
+        reply_keyboard = [['✅Да', '❌Нет']]
+        markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True)
+        update.message.reply_text('Вы уверены?', reply_markup=markup)
+        return 10
     else:
         session = db_session.create_session()
         username = ''
@@ -360,7 +366,8 @@ def image(update, context):  # 7th in Conversation
     image = current_images[update.message.chat_id][current_image[update.message.chat_id]].get('Image')
     file = base64.b64decode(image.get('data'))
     name = image.get('name')
-    reply_keyboard = [['🗑Удалить картинку', '↩️Назад']]
+    reply_keyboard = [['🗑Удалить картинку', '✍️Изменить название картинки'],
+                      ['↩️Назад']]
     markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True)
     updater.bot.sendPhoto(update.message.chat_id, BytesIO(file))
     update.message.reply_text(f'🌆Изображение \"{name}\"', reply_markup=markup)
@@ -374,6 +381,9 @@ def command_image(update, context):  # 8th in Conversation
         markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True)
         update.message.reply_text('Вы уверены?', reply_markup=markup)
         return 9
+    elif command == '✍️Изменить название картинки':
+        update.message.reply_text('Введите новое название изображения')
+        return 11
     elif command == '↩️Назад':
         global current_room
         show_room(update, context, num=current_room[update.message.chat_id], refresh=False)
@@ -641,6 +651,49 @@ def home(update, context):
     return ConversationHandler.END
 
 
+def leave_the_room(update, context):  # 10 in Conversation
+    ans = update.message.text
+    if ans == '✅Да':
+        global current_rooms
+        global current_room
+        room = current_rooms[update.message.chat_id][current_room[update.message.chat_id]].get('Room')
+        rid = room.get('id')
+        room_name = room.get('name')
+        session = db_session.create_session()
+        userid = session.query(User).filter(User.chat_id == update.message.chat_id).first().id
+        response = put(f'{config.API_ADDRESS}/api/rooms/{rid}', json={'users_id': userid, 'remove_user': True}).json()
+        if response.get('success'):
+            update.message.reply_text(f'✅Вы были успешно покинули комнату \"{room_name}\"')
+            show_rooms(update, context)
+            return 1
+        else:
+            logging.error(f'During /rooms API\'s sent error: {response.get("error")}')
+            update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
+                                      'скоро все наладится!')
+            return ConversationHandler.END
+    else:
+        show_room(update, context)
+        return 5
+
+
+def change_the_name_of_the_photo(update, context):  # 11 in Conversation
+    global current_image
+    global current_images
+    new_name = update.message.text
+    info = current_images[update.message.chat_id][current_image[update.message.chat_id]].get('Image')
+    image_id = info.get('id')
+    response = put(f'{config.API_ADDRESS}/api/images/{image_id}', json={'name': new_name}).json()
+    if response.get('success'):
+        update.message.reply_text(f'✅Вы были успешно поменяли название изображения. Новое название: \"{new_name}\"')
+        show_room(update, context)
+        return 5
+    else:
+        logging.error(f'During /rooms API\'s sent error: {response.get("error")}')
+        update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
+                                  'скоро все наладится!')
+        return ConversationHandler.END
+
+
 def main():
     global updater
     updater = Updater(config.TOKEN, use_context=True)
@@ -659,7 +712,9 @@ def main():
             6: [MessageHandler(Filters.text, delete_room)],
             7: [MessageHandler(Filters.text, image)],
             8: [MessageHandler(Filters.text, command_image)],
-            9: [MessageHandler(Filters.text, delete_image)]
+            9: [MessageHandler(Filters.text, delete_image)],
+            10: [MessageHandler(Filters.text, leave_the_room)],
+            11: [MessageHandler(Filters.text, change_the_name_of_the_photo)],
         },
 
         fallbacks=[CommandHandler('home', home)]
