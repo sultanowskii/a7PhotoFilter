@@ -3,7 +3,7 @@ from flask_restful import abort
 from .users import User
 from .rooms import Room
 from .images import Image
-from .. import config
+import config
 
 
 def abort_if_user_not_found(user_id):
@@ -29,21 +29,21 @@ def abort_if_image_not_found(image_id):
 
 def abort_if_room_is_full_of_images(room_id):
     session = db_session.create_session()
-    room = session.query(Image).get(room_id)
+    room = session.query(Room).get(room_id)
     if len(room.images) > config.ROOM_IMAGE_LIMIT:
         abort(403, error=f"Room {room_id} is full of images")
 
 
 def abort_if_room_is_full_of_users(room_id):
     session = db_session.create_session()
-    room = session.query(Image).get(room_id)
+    room = session.query(Room).get(room_id)
     if len(room.users) > config.ROOM_USER_LIMIT:
         abort(403, error=f"Room {room_id} is full of users")
 
 
 def abort_if_user_is_full_of_rooms(user_id):
     session = db_session.create_session()
-    user = session.query(Image).get(user_id)
+    user = session.query(User).get(user_id)
     if len(user.rooms) > config.USER_ROOM_LIMIT:
         abort(403, error=f"User {user_id} is full of rooms")
 

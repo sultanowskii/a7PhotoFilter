@@ -20,4 +20,4 @@ class Image(SqlAlchemyBase, SerializerMixin):
 
     def generate_path(self):
         now = datetime.now().strftime('%H%M%S-%d%m%Y')
-        self.path = f'static/img/{self.name}{now}.{self.mime.lower()}'
+        self.path = f'userdata/img/{self.name}{now}.{self.mime.lower()}'

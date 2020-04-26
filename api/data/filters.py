@@ -5,7 +5,7 @@ from PIL import Image
 import random
 
 
-def add_filter(image_object, fid, mime):
+def add_filter(image_object, fid):
     im = Image.open(image_object.path)
     pixels = im.load()  # список с пикселями
     x, y = im.size
