@@ -89,7 +89,7 @@ def help(update, context):
         "<b>Комната</b> - особое хранилище, куда вы можете загрузить ваши фотографии, и поделиться ими, добавив туда "
         "своих друзей!\n\n"
         "❗️Важно\n"
-        "   - <b>Отправляйте ваше изображение именно как картинку!</b>"
+        "   - <b>Отправляйте ваше изображение именно как фото!</b>"
         "   - <b>Ограничение на размер одного фото - 500кб</b>\n"
         "   - <b>На загрузку списка комнат и изображений требуется время, спасибо за ваше терпение!</b>\n"
         "   - <b>Поддерживаемые форматы: JPG, PNG, BMP</b>"
@@ -118,7 +118,7 @@ def show_rooms(update, context, refresh=True):  # Function to show all users' ro
             except requests.exceptions.ConnectionError:
                 if k < 2:
                     continue
-                logging.fatal(f'Server is unreachable')
+                logging.fatal(f'Server is unreachable!')
                 update.message.reply_text('😿Сервер недоступен.\n\nСвязь с разработчиками: @a7ult, @gabidullin_kamil')
                 return home(update, context)
         if not user or user.get('error'):
@@ -138,7 +138,7 @@ def show_rooms(update, context, refresh=True):  # Function to show all users' ro
                 except requests.exceptions.ConnectionError:
                     if k < 2:
                         continue
-                    logging.fatal(f'Server is unreachable')
+                    logging.fatal(f'Server is unreachable!')
                     update.message.reply_text('😿Сервер недоступен.\n\nСвязь с разработчиками: @a7ult, '
                                               '@gabidullin_kamil!')
                     return home(update, context)
@@ -193,7 +193,7 @@ def show_room(update, context, num=None, refresh=True):  # Function to show user
                 except requests.exceptions.ConnectionError:
                     if k < 2:
                         continue
-                    logging.fatal(f'Server is unreachable')
+                    logging.fatal(f'Server is unreachable!')
                     update.message.reply_text(
                         '😿Сервер недоступен.\n\nСвязь с разработчиками: @a7ult, @gabidullin_kamil')
                     return home(update, context)
@@ -280,7 +280,7 @@ def add_room(update, context):  # 2nd in Conversation
             except requests.exceptions.ConnectionError:
                 if k < 2:
                     continue
-                logging.fatal(f'Server is unreachable')
+                logging.fatal(f'Server is unreachable!')
                 update.message.reply_text('😿Сервер недоступен.\n\nСвязь с разработчиками: @a7ult, @gabidullin_kamil')
                 return home(update, context)
         if not response or response.get('error'):
@@ -289,6 +289,7 @@ def add_room(update, context):  # 2nd in Conversation
                                       'скоро все наладится!')
             return home(update, context)
         update.message.reply_text('✅Комната успешно создана!')
+        logging.info(f'Added new room! ID: {response.get("id")}')
         return show_rooms(update, context)
     else:
         update.message.reply_text('❗️У вас слишком много комнат.')
@@ -322,7 +323,7 @@ def add_user_to_room(update, context):  # 4th in Conversation
         except requests.exceptions.ConnectionError:
             if k < 2:
                 continue
-            logging.fatal(f'Server is unreachable')
+            logging.fatal(f'Server is unreachable!')
             update.message.reply_text('😿Сервер недоступен.\n\nСвязь с разработчиками: @a7ult, @gabidullin_kamil')
             return home(update, context)
     if response.get('Room')['name'] != name:
@@ -338,7 +339,7 @@ def add_user_to_room(update, context):  # 4th in Conversation
         except requests.exceptions.ConnectionError:
             if k < 2:
                 continue
-            logging.fatal(f'Server is unreachable')
+            logging.fatal(f'Server is unreachable!')
             update.message.reply_text('😿Сервер недоступен.\n\nСвязь с разработчиками: @a7ult, @gabidullin_kamil')
             return home(update, context)
     if not response:
@@ -434,7 +435,7 @@ def delete_room(update, context):  # 6th in covnersation
             except requests.exceptions.ConnectionError:
                 if k < 2:
                     continue
-                logging.fatal(f'Server is unreachable')
+                logging.fatal(f'Server is unreachable!')
                 update.message.reply_text('😿Сервер недоступен.\n\nСвязь с разработчиками: @a7ult, @gabidullin_kamil')
                 return home(update, context)
         if not response or response.get('error'):
@@ -510,7 +511,7 @@ def delete_image(update, context):  # 9th in Conversation
             except requests.exceptions.ConnectionError:
                 if k < 2:
                     continue
-                logging.fatal(f'Server is unreachable')
+                logging.fatal(f'Server is unreachable!')
                 update.message.reply_text('😿Сервер недоступен.\n\nСвязь с разработчиками: @a7ult, @gabidullin_kamil')
                 return home(update, context)
         rid = current_rooms[userid][current_room[userid]]['Room']['id']
@@ -522,7 +523,7 @@ def delete_image(update, context):  # 9th in Conversation
             except requests.exceptions.ConnectionError:
                 if k < 2:
                     continue
-                logging.fatal(f'Server is unreachable')
+                logging.fatal(f'Server is unreachable!')
                 update.message.reply_text('😿Сервер недоступен.\n\nСвязь с разработчиками: @a7ult, @gabidullin_kamil')
                 return home(update, context)
         current_images[userid][current_image[userid]] = None
@@ -555,7 +556,7 @@ def leave_the_room(update, context):  # 10 in Conversation
             except requests.exceptions.ConnectionError:
                 if k < 2:
                     continue
-                logging.fatal(f'Server is unreachable')
+                logging.fatal(f'Server is unreachable!')
                 update.message.reply_text('😿Сервер недоступен.\n\nСвязь с разработчиками: @a7ult, @gabidullin_kamil')
                 return home(update, context)
         if not response or response.get('error'):
@@ -583,7 +584,7 @@ def change_the_name_of_the_photo(update, context):  # 11 in Conversation
         except requests.exceptions.ConnectionError:
             if k < 2:
                 continue
-            logging.fatal(f'Server is unreachable')
+            logging.fatal(f'Server is unreachable!')
             update.message.reply_text('😿Сервер недоступен.\n\nСвязь с разработчиками: @a7ult, @gabidullin_kamil')
             return home(update, context)
     if not response or response.get('error'):
@@ -614,18 +615,25 @@ def image_get(update, context):
     for k in range(3):
         try:
             response = post(f'{config.API_ADDRESS}/api/images',
-                            json={'name': now, 'mime': mime, 'image_data': base64_data}, timeout=3).json()
+                            json={'name': now, 'mime': mime, 'image_data': base64_data}, timeout=3)
             break
         except requests.exceptions.ConnectionError:
             if k < 2:
                 continue
-            logging.fatal(f'Server is unreachable')
+            logging.fatal(f'Server is unreachable!!')
             update.message.reply_text('😿Сервер недоступен.\n\nСвязь с разработчиками: @a7ult, @gabidullin_kamil')
             return home(update, context)
+    code = response.status_code
+    response = response.json()
     if not response or response.get('error'):
-        logging.error(f'During /image API\'s sent error: {response.get("error")}')
-        update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
-                                  'скоро все наладится!')
+        if code == 400:
+            logging.warning('Invalid image-data sent to server during /image')
+            update.message.reply_text('😿С изображением возникли проблемы, пожалуйста, попробуйте другое!')
+            return home(update, context)
+        else:
+            logging.error(f'During /image API\'s sent error: {response.get("error")}')
+            update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
+                                      'скоро все наладится!')
         return home(update, context)
     iid = int(response.get('id'))
     loaded_im_id[update.message.chat_id] = iid
@@ -683,7 +691,7 @@ def choose_filter(update, context):  # 1st in Conversation
         except requests.exceptions.ConnectionError:
             if k < 2:
                 continue
-            logging.fatal(f'Server is unreachable')
+            logging.fatal(f'Server is unreachable!')
             update.message.reply_text('😿Сервер недоступен.\n\nСвязь с разработчиками: @a7ult, @gabidullin_kamil')
             return home(update, context)
     if not response or response.get('error'):
@@ -691,12 +699,19 @@ def choose_filter(update, context):  # 1st in Conversation
         update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
                                   'скоро все наладится!')
         return home(update, context)
-    file = base64.b64decode(response['Image'].get('data'))
+    file = None
+    try:
+        file = base64.b64decode(response['Image'].get('data'))
+    except Exception as e:
+        logging.warning(f'During decoding filtered image error happened. Error: {e}')
+        update.message.reply_text('😿С изображением возникли проблемы, пожалуйста, попробуйте другое!')
+        return home(update, context)
     filtered_im_id[update.message.chat_id] = response['Image']['id']
     updater.bot.sendPhoto(update.message.chat_id, BytesIO(file))
     reply_keyboard = [['✅Да', '❌Нет']]
     markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True)
     update.message.reply_text('Хотите сохранить фотографию?', reply_markup=markup)
+    logging.info(f'Added filter {fid} to the image {imid}')
     return 2
 
 
@@ -716,11 +731,11 @@ def save_image_to_room(update, context):  # 2nd in Conversation
             except requests.exceptions.ConnectionError:
                 if k < 2:
                     continue
-                logging.fatal(f'Server is unreachable')
+                logging.fatal(f'Server is unreachable!')
                 update.message.reply_text('😿Сервер недоступен.\n\nСвязь с разработчиками: @a7ult, @gabidullin_kamil')
                 return home(update, context)
         if not user or user.get('error'):
-            logging.error(f'During /rooms API\'s sent error: {user.get("error")}')
+            logging.error(f'During /image API\'s sent error: {user.get("error")}')
             update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
                                       'скоро все наладится!')
             return home(update, context)
@@ -738,17 +753,17 @@ def save_image_to_room(update, context):  # 2nd in Conversation
                 except requests.exceptions.ConnectionError:
                     if k < 2:
                         continue
-                    logging.fatal(f'Server is unreachable')
+                    logging.fatal(f'Server is unreachable!')
                     update.message.reply_text(
                         '😿Сервер недоступен.\n\nСвязь с разработчиками: @a7ult, @gabidullin_kamil')
                     return home(update, context)
             if not room or room.get('error'):
-                logging.error(f'During /rooms API\'s sent error: {room.get("error")}')
+                logging.error(f'During /image API\'s sent error: {room.get("error")}')
                 update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного,'
                                           'скоро все наладится!')
                 return home(update, context)
             if len(room['Room']['images']) < config.ROOM_IMAGE_LIMIT:
-                text += f" <b>{cnt}</b>: " + room['Room'].get('name') + '\n'
+                text += f' <b>{cnt}</b>: ' + room['Room'].get('name') + '\n'
                 cnt += 1
                 current_rooms[update.message.chat_id].append(room)
         cnt = 1
@@ -792,7 +807,7 @@ def save_image_to_room(update, context):  # 2nd in Conversation
             except requests.exceptions.ConnectionError:
                 if k < 2:
                     continue
-                logging.fatal(f'Server is unreachable')
+                logging.fatal(f'Server is unreachable!')
                 update.message.reply_text('😿Сервер недоступен.\n\nСвязь с разработчиками: @a7ult, @gabidullin_kamil')
                 return home(update, context)
         if not response or response.get('error'):
@@ -819,11 +834,11 @@ def choose_room(update, context):  # 3rd in Conversation
         except requests.exceptions.ConnectionError:
             if k < 2:
                 continue
-            logging.fatal(f'Server is unreachable')
+            logging.fatal(f'Server is unreachable!')
             update.message.reply_text('😿Сервер недоступен.\n\nСвязь с разработчиками: @a7ult, @gabidullin_kamil')
             return home(update, context)
     if not response or response.get('error'):
-        logging.error(f'During /rooms API\'s sent error: {response.get("error")}')
+        logging.error(f'During /image API\'s sent error: {response.get("error")}')
         update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
                                   'скоро все наладится!')
         return home(update, context)
@@ -843,16 +858,16 @@ def add_room_with_image(update, context):  # 4th in Conversation
     for k in range(3):
         try:
             room = post(f'{config.API_ADDRESS}/api/rooms', json={'name': name, 'users_id': str(user_id)},
-                            timeout=3).json()
+                        timeout=3).json()
             break
         except requests.exceptions.ConnectionError:
             if k < 2:
                 continue
-            logging.fatal(f'Server is unreachable')
+            logging.fatal(f'Server is unreachable!')
             update.message.reply_text('😿Сервер недоступен.\n\nСвязь с разработчиками: @a7ult, @gabidullin_kamil')
             return home(update, context)
     if not room or room.get('error'):
-        logging.error(f'During /rooms API\'s sent error: {room.get("error")}')
+        logging.error(f'During /image API\'s sent error: {room.get("error")}')
         update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
                                   'скоро все наладится!')
         return home(update, context)
@@ -866,16 +881,17 @@ def add_room_with_image(update, context):  # 4th in Conversation
             except requests.exceptions.ConnectionError:
                 if k < 2:
                     continue
-                logging.fatal(f'Server is unreachable')
+                logging.fatal(f'Server is unreachable!')
                 update.message.reply_text('😿Сервер недоступен.\n\nСвязь с разработчиками: @a7ult, @gabidullin_kamil')
                 return home(update, context)
         if not response or response.get('error'):
-            logging.error(f'During /rooms API\'s sent error: {response.get("error")}')
+            logging.error(f'During /image API\'s sent error: {response.get("error")}')
             update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
                                       'скоро все наладится!')
             return home(update, context)
         update.message.reply_text('✅Комната успешно создана, фото добавлено!')
         update.message.reply_text('🔠Введите название изображения')
+        logging.info(f'Added new image with ID {lii} to room with id {room[id]}')
         return 5
 
 
@@ -891,11 +907,11 @@ def set_name_to_image(update, context):  # 5th in Conversation
         except requests.exceptions.ConnectionError:
             if k < 2:
                 continue
-            logging.fatal(f'Server is unreachable')
+            logging.fatal(f'Server is unreachable!')
             update.message.reply_text('😿Сервер недоступен.\n\nСвязь с разработчиками: @a7ult, @gabidullin_kamil')
             return home(update, context)
     if not response or response.get('error'):
-        logging.error(f'During /rooms API\'s sent error: {response.get("error")}')
+        logging.error(f'During /image API\'s sent error: {response.get("error")}')
         update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
                                   'скоро все наладится!')
         return home(update, context)
@@ -948,8 +964,8 @@ def main():
 
         fallbacks=[CommandHandler('home', home)]
     )
-    dp.add_handler(CommandHandler("start", start))
-    dp.add_handler(CommandHandler("help", help))
+    dp.add_handler(CommandHandler('start', start))
+    dp.add_handler(CommandHandler('help', help))
     dp.add_handler(rooms_conv_handler)
     dp.add_handler(image_conv_handler)
     updater.start_polling()

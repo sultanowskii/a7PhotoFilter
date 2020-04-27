@@ -17,12 +17,12 @@ from datetime import datetime
 import os
 import logging
 
+images_parser = images_parser.parser
+
 logging.basicConfig(
     filename='logs.log',
     format='%(asctime)s %(levelname)s %(name)s %(message)s'
 )
-
-images_parser = images_parser.parser
 
 
 class ImagesResource(Resource):
@@ -102,6 +102,16 @@ class ImagesListResource(Resource):
     def post(self):
         args = images_parser.parse_args()
         session = db_session.create_session()
+        if args.get('remove_room') == True:
+            e = 'Invalid json-data: remove_room is not allowed in POST'
+            logging.warning(f'Bad request for /images/ got. Error: {e}')
+            abort(400, error=f'Bad request: {e}')
+        req_args = ['name', 'mime', 'image_data']
+        for arg in req_args:
+            if args.get(arg) == None:
+                e = f'Invalid json-data: No required argument \'{arg}\' in json'
+                logging.warning(f'Bad request for /images/ got. Error: {e}')
+                abort(400, error=f'Bad request: {e}')
         image = Image()
         image.name = args.get('name')
         image.mime = args.get('mime')
@@ -112,8 +122,13 @@ class ImagesListResource(Resource):
             image.room_id = room.id
             image.room = room
         image.generate_path()
-        file = base64.b64decode(args.get('image_data'))
-        img = PilImage.open(BytesIO(file))
+        img = None
+        try:
+            file = base64.b64decode(args.get('image_data'))
+            img = PilImage.open(BytesIO(file))
+        except Exception:
+            logging.warning('Invalid image-data got')
+            abort(400, error='Invalid image data')
         session.add(image)
         session.commit()
         img.save(image.path)

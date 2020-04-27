@@ -4,12 +4,18 @@ from . import db_session
 from . import users_parser
 import config
 
+import logging
 from flask import jsonify
 from flask_restful import Resource, abort
 from .aborts import abort_if_user_is_full_of_rooms, abort_if_room_is_full_of_users, abort_if_room_not_found
 from .aborts import abort_if_user_not_found
 
 parser = users_parser.parser
+
+logging.basicConfig(
+    filename='logs.log',
+    format='%(asctime)s %(levelname)s %(name)s %(message)s'
+)
 
 
 class UsersResource(Resource):
@@ -70,6 +76,14 @@ class UsersListResource(Resource):
 
     def post(self):
         args = parser.parse_args()
+        if args.get('remove_room') == True:
+            e = 'Invalid json-data: \'remove_room\' is not allowed in POST'
+            logging.warning(f'Bad request for /users/ got. Error: {e}')
+            abort(400, error=f'Bad request: {e}')
+        if args.get('name') == None:
+            e = 'Invalid json-data: No required argument \'name\' in json'
+            logging.warning(f'Bad request for /users/ got. Error: {e}')
+            abort(400, error=f'Bad request: {e}')
         session = db_session.create_session()
         user = User(
             name=args.get('name'),
