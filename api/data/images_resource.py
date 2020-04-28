@@ -21,7 +21,8 @@ images_parser = images_parser.parser
 
 logging.basicConfig(
     filename='logs.log',
-    format='%(asctime)s %(levelname)s %(name)s %(message)s'
+    format='%(asctime)s %(levelname)s %(name)s %(message)s',
+    level=logging.INFO
 )
 
 

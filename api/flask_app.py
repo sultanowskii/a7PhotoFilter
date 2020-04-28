@@ -10,13 +10,14 @@ from werkzeug import exceptions
 
 logging.basicConfig(
     filename='logs.log',
-    format='%(asctime)s %(levelname)s %(name)s %(message)s'
+    format='%(asctime)s %(levelname)s %(name)s %(message)s',
+    level=logging.INFO
 )
 
 
 app = Flask(__name__)
-api = Api(app)
 app.config['SECRET_KEY'] = config.KEY
+api = Api(app)
 
 
 def main():
