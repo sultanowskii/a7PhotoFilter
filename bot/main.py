@@ -892,7 +892,8 @@ def add_room_with_image(update, context):  # 4th in Conversation
             return home(update, context)
         update.message.reply_text('✅Комната успешно создана, фото добавлено!')
         update.message.reply_text('🔠Введите название изображения')
-        logging.info(f'Added new image with ID {lii} to room with id {room[id]}')
+        rid = room['id']
+        logging.info(f'Added new image with ID {lii} to room with id {rid}')
         return 5
 
 
