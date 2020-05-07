@@ -17,6 +17,7 @@ import requests
 
 logging.basicConfig(
     filename='logs.log',
+    level=logging.INFO,
     format='%(asctime)s %(levelname)s %(name)s %(message)s'
 )
 
