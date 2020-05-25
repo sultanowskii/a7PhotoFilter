@@ -23,7 +23,7 @@ logging.basicConfig(
 
 db_session.global_init("db/users.sqlite")
 
-is_in_rooms = dict()
+is_in_rooms = dict()  # here we storage, if user is in /rooms or not
 current_rooms = dict()  # all current user's rooms
 current_room = dict()  # local id of current user's room
 current_images = dict()  # all current user's images in current room
@@ -69,7 +69,7 @@ def start(update, context):
                                       f"(ограничение по размеру файла: 500кб)\n\n"
                                       " 😽 Приятного использования!", reply_markup=markup)
         else:
-            err = response.get('error')
+            logging.error(f'During /rooms API\'s sent error: {user.get("error")}')
             update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
                                       'скоро все наладится!')
             return home(update, context)
@@ -159,8 +159,12 @@ def show_rooms(update, context, refresh=True):  # Function to show all users' ro
         rooms = current_rooms.get(update.message.chat_id)
         for i in range(len(rooms)):
             text += f" <b>{i + 1}</b>: " + rooms[i]['Room'].get('name') + '\n'
-    reply_keyboard = [['🖍Добавить комнату', '🚪Войти в комнату'],
-                      ['📩Добавиться в комнату', '↩️Назад']]
+    if len(rooms) == 0:
+        reply_keyboard = [['🖍Добавить комнату'],
+                          ['📩Добавиться в комнату', '↩️Назад']]
+    else:
+        reply_keyboard = [['🖍Добавить комнату', '🚪Войти в комнату'],
+                          ['📩Добавиться в комнату', '↩️Назад']]
     markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True)
     update.message.reply_text(text, parse_mode=ParseMode.HTML, reply_markup=markup)
     return 1
@@ -233,6 +237,16 @@ def command_rooms(update, context):  # 1st in Covnersation
         update.message.reply_text('📝Введите название комнаты:', reply_markup=ReplyKeyboardRemove())
         return 2
     elif command == '🚪Войти в комнату':
+        chat_id = update.message.chat_id
+        if len(current_rooms[chat_id]) == 0:
+            session = db_session.create_session()
+            username = ''
+            try:
+                username = session.query(User).filter(User.chat_id == chat_id).first().name + ', '
+            except:
+                logging.warning(f'Unregistered user entered dialog. Chat_id: {chat_id}')
+            update.message.reply_text(f'😿Извини, {username}я тебя не понял.\n\nНапиши /help, если тебе нужна помощь!')
+            return home(update, context)
         reply_keyboard = []
         rooms_count = len(current_rooms[update.message.chat_id])
         if rooms_count % 3 == 0:
@@ -356,7 +370,10 @@ def add_user_to_room(update, context):  # 4th in Conversation
                                   'скоро все наладится!')
         return home(update, context)
     if response.get('error') == exceptions.Forbidden:
-        update.message.reply_text(f'🏚Эта комната переполнена!')
+        reply_keyboard = [['↩️Назад']]
+        markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True)
+        update.message.reply_text(f'🏚Эта комната переполнена! Введите другой код.', reply_markup=markup)
+        return 4
     elif response.get('error'):
         logging.error(f'During /rooms API\'s sent error: {response.get("error")}')
         update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
@@ -605,7 +622,7 @@ def change_the_name_of_the_photo(update, context):  # 11 in Conversation
 
 
 def image_get(update, context):
-    if is_in_rooms[update.message.chat_id] == True:
+    if is_in_rooms.get(update.message.chat_id, None) == True:
         update.message.reply_text('Накладывать фильтры можно только в главном меню.')
         return ConversationHandler.END
     global loaded_im_id
@@ -684,7 +701,7 @@ def choose_filter(update, context):  # 1st in Conversation
     elif filter_type == '👽Другой мир 4':
         fid = 13
     else:
-        update.message.reply_text('Воспользуетесь клавиатурой')
+        update.message.reply_text('Воспользуйтесь кнопками ответа.')
         reply_keyboard = [['👽Другой мир 1', '👽Другой мир 2', '⚽️Чёрно-белое 1'],
                           ['🖲 Негатив', '💡Высветление', '🌌Размытие'],
                           ['📈Увеличение резкости', '📉Уменьшение качества', '🔊Добавление шума'],
@@ -692,7 +709,7 @@ def choose_filter(update, context):  # 1st in Conversation
         markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True)
         update.message.reply_text('Выберите фильтр:', reply_markup=markup)
         return 1
-    update.message.reply_text('Фото обрабатывается...')
+    update.message.reply_text('👾Фото обрабатывается...')
     imid = loaded_im_id[update.message.chat_id]
     response = None
     for k in range(3):
@@ -822,7 +839,10 @@ def save_image_to_room(update, context):  # 2nd in Conversation
                 return home(update, context)
         if not response or response.get('error'):
             logging.warning('During delete-request for filtered image error on API happened')
-        return home(update, context)
+        reply_keyboard = [['✅Да', '❌Нет']]
+        markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True)
+        update.message.reply_text('Хотите ли вы наложить другой фильтр на загруженное вами фото?', reply_markup=markup)
+        return 6
 
 
 def choose_room(update, context):  # 3rd in Conversation
@@ -927,7 +947,48 @@ def set_name_to_image(update, context):  # 5th in Conversation
                                   'скоро все наладится!')
         return home(update, context)
     update.message.reply_text('✅Успешно!')
-    return home(update, context)
+    reply_keyboard = [['✅Да', '❌Нет']]
+    markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True)
+    update.message.reply_text('Хотите ли вы наложить другой фильтр на загруженное вами фото?', reply_markup=markup)
+    return 6
+
+
+def continue_editing_photo(update, context):
+    answer = update.message.text
+    if answer == '✅Да':
+        reply_keyboard = [['👽Другой мир 1', '👽Другой мир 2', '⚽️Чёрно-белое 1'],
+                          ['🖲 Негатив', '💡Высветление', '🌌Размытие'],
+                          ['📈Увеличение резкости', '📉Уменьшение качества', '🔊Добавление шума'],
+                          ['🏺Ретро', '⚫️⚪️Чёрно-белое 2', '👽Другой мир 3'], ['👽Другой мир 4']]
+        markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True)
+        text = '🔠<b>Выберите фильтр:</b>\n\n 👽Другой мир 1\n 👽Другой мир 2\n ⚽️Чёрно-белое 1\n 🖲 Негатив\n' \
+               ' 💡Высветление \n 🌌Размытие\n 📈Увеличение резкости\n 📉Уменьшение качества\n 🔊Добавление шума\n 🏺Ретро' \
+               '\n ⚫️⚪️Чёрно-белое 2\n 👽Другой мир 3\n 👽Другой мир 4'
+        update.message.reply_text(text, reply_markup=markup, parse_mode=ParseMode.HTML)
+        return 1
+    elif answer == '❌Нет':
+        iid = loaded_im_id.get(update.message.chat_id)
+        response = None
+        for k in range(3):
+            try:
+                response = delete(f'{config.API_ADDRESS}/api/images/{iid}', timeout=3).json()
+                break
+            except requests.exceptions.ConnectionError:
+                if k < 2:
+                    continue
+                logging.fatal(f'Server is unreachable!')
+                update.message.reply_text('😿Сервер недоступен.\n\nСвязь с разработчиками: @a7ult, @gabidullin_kamil')
+        return home(update, context)
+    else:
+        session = db_session.create_session()
+        username = ''
+        chat_id = update.message.chat_id
+        try:
+            username = session.query(User).filter(User.chat_id == chat_id).first().name + ', '
+        except:
+            logging.warning(f'Unregistered user entered dialog. Chat_id: {chat_id}')
+        update.message.reply_text(f'😿Извини, {username}я тебя не понял.\n\nНапиши /help, если тебе нужна помощь!')
+        return home(update, context)
 
 
 def home(update, context):
@@ -970,11 +1031,13 @@ def main():
             2: [MessageHandler(Filters.text, save_image_to_room)],
             3: [MessageHandler(Filters.text, choose_room)],
             4: [MessageHandler(Filters.text, add_room_with_image)],
-            5: [MessageHandler(Filters.text, set_name_to_image)]
+            5: [MessageHandler(Filters.text, set_name_to_image)],
+            6: [MessageHandler(Filters.text, continue_editing_photo)]
         },
 
         fallbacks=[CommandHandler('home', home)]
     )
+
     dp.add_handler(CommandHandler('start', start))
     dp.add_handler(CommandHandler('help', help))
     dp.add_handler(rooms_conv_handler)
@@ -984,5 +1047,4 @@ def main():
     updater.idle()
 
 
-if __name__ == '__main__':
-    main()
+main()

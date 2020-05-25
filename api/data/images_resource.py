@@ -53,8 +53,12 @@ class ImagesResource(Resource):
                 string_data = base64.b64encode(f.read()).decode('utf-8')
             return jsonify({'Image': {'id': new_im.id, 'data': string_data, 'name': name}})
         else:
-            with open(image.path, 'rb') as f:
-                string_data = base64.b64encode(f.read()).decode('utf-8')
+            try:
+                with open(image.path, 'rb') as f:
+                    string_data = base64.b64encode(f.read()).decode('utf-8')
+            except FileNotFoundError:
+                logging.error(f'Image file not found. ID: {image_id}')
+                return abort(404, error='File not found!')
             return jsonify({'Image': {'id': image.id, 'data': string_data, 'name': image.name}})
 
     def delete(self, image_id):
