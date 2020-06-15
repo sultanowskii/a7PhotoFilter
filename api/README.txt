@@ -17,4 +17,4 @@ GitHub проекта: https://github.com/sultanowskii/a7PhotoFilter/tree/master
 Благодарим Мусина Искандера за помощь и консультацию в создании проекта.
 
 Если у вас остались какие-нибудь вопросы, то пишите в Telegram:
-Султанов Артур -  t.me/a7ult
+Султанов Артур -  t.me/sultanowskii
