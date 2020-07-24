@@ -1,19 +1,16 @@
-from telegram.ext import (CommandHandler, ConversationHandler, Updater, MessageHandler, Filters, StringCommandHandler)
-from telegram import InputMediaPhoto, ParseMode, bot, ReplyKeyboardMarkup, ReplyKeyboardRemove
-
-from requests import post, get, delete, put
-
-import config
-from data.users import User
-from data import db_session
-
 import base64
-from io import BytesIO
-from werkzeug import exceptions
-import logging
+import config
 from datetime import datetime
-
+from io import BytesIO
+import logging
 import requests
+from telegram.ext import (CommandHandler, ConversationHandler, Updater, MessageHandler, Filters)
+from telegram import (ParseMode, ReplyKeyboardMarkup, ReplyKeyboardRemove)
+from requests import post, get, delete, put
+from werkzeug import exceptions
+
+from data import db_session
+from data.users import User
 
 logging.basicConfig(
     filename='logs.log',
@@ -23,18 +20,18 @@ logging.basicConfig(
 
 db_session.global_init("db/users.sqlite")
 
-is_in_rooms = dict()  # here we storage, if user is in /rooms or not
-current_rooms = dict()  # all current user's rooms
-current_room = dict()  # local id of current user's room
-current_images = dict()  # all current user's images in current room
-current_image = dict()  # local id of current user's image
+filtered_im_id = dict()  # id (on API) of filtered image which user just uploaded
 fit_rooms = dict()  # a number of fit rooms (where user can save his image)
 loaded_im_id = dict()  # id (on API) of image which user just uploaded
-filtered_im_id = dict()  # id (on API) of filtered image which user just uploaded
+is_in_rooms = dict()  # here we storage, if user is in /rooms or not
+current_images = dict()  # all current user's images in current room
+current_image = dict()  # local id of current user's image
+current_room = dict()  # local id of current user's room
+current_rooms = dict()  # all current user's rooms
 start_text = '<b>Главная</b>\n\n' \
-             ' 🌃 Чтобы приступить к обработке изображения, просто пришли мне его!\n' \
-             ' 🏘 Для просмотра своих комнат напиши /rooms\n' \
-             ' 🤔 Чтобы получить помощь, используй /help'
+             ' 🌃 Чтобы приступить к обработке изображения, просто пришлите мне его!\n' \
+             ' 🏘 Для просмотра своих комнат напишите /rooms\n' \
+             ' 🤔 Чтобы получить помощь, используйте /help'
 updater = None
 
 
@@ -63,9 +60,9 @@ def start(update, context):
             session.commit()
             logging.info(f'New user registered: {chat_id} {lastname} {name}')
             update.message.reply_text(f"Привет, {name}! 👋\n"
-                                      f" 📷Я помогу тебе наложить фильтр на твое фото.\n"
+                                      f" 📷Я помогу вам наложить фильтр на фото.\n"
                                       f"Помощь по командам - /help.\n"
-                                      f"А для того, чтобы наложить фильтр на твое фото, пришли мне его! "
+                                      f" А для того, чтобы наложить фильтр на ваше фото, пришлите мне его! "
                                       f"(ограничение по размеру файла: 500кб)\n\n"
                                       " 😽 Приятного использования!", reply_markup=markup)
         else:
@@ -76,12 +73,12 @@ def start(update, context):
     else:
         name = user.name
         update.message.reply_text(f"Привет, {name}! 👋\n"
-                                  f" 📷 Я помогу тебе наложить фильтр на твое фото.\n"
+                                  f" 📷 Я помогу вам наложить фильтр на фото.\n"
                                   f"Помощь по командам - /help.\n"
-                                  f" А для того, чтобы наложить фильтр на твое фото, пришли мне его! "
+                                  f" А для того, чтобы наложить фильтр на ваше фото, пришлите мне его! "
                                   f"(ограничение по размеру файла: 500кб)\n\n"
                                   "😽 Приятного использования!", reply_markup=markup)
-
+ 
 
 def help(update, context):
     is_in_rooms[update.message.chat_id] = False
@@ -94,7 +91,7 @@ def help(update, context):
         "<b>Комната</b> - особое хранилище, куда вы можете загрузить ваши фотографии, и поделиться ими, добавив туда "
         "своих друзей!\n\n"
         "❗️Важно\n"
-        "   - <b>Отправляйте фаше фото только в главном меню!</b>"
+        "   - <b>Отправляйте ваше фото только в главном меню!</b>"
         "   - <b>Отправляйте ваше изображение именно как фото!</b>\n"
         "   - <b>Ограничение на размер одного фото - 500кб</b>\n"
         "   - <b>На загрузку списка комнат и изображений требуется время, спасибо за ваше терпение!</b>\n"
@@ -109,7 +106,7 @@ def help(update, context):
         " 😽 Приятного использования!", parse_mode=ParseMode.HTML, reply_markup=markup)
 
 
-def show_rooms(update, context, refresh=True):  # Function to show all users' rooms. 'Refresh' is need or not to
+def show_rooms(update, context, refresh=True):  # Function to show all users' rooms. 'Refresh' needed or not to
     # update rooms-list (to make it works faster)
     update.message.reply_text('👾Открываю список комнат...')
     text = '🏫<b>Ваши комнаты</b>:\n'
@@ -160,10 +157,10 @@ def show_rooms(update, context, refresh=True):  # Function to show all users' ro
         for i in range(len(rooms)):
             text += f" <b>{i + 1}</b>: " + rooms[i]['Room'].get('name') + '\n'
     if len(rooms) == 0:
-        reply_keyboard = [['🖍Добавить комнату'],
+        reply_keyboard = [['🖍Создать комнату'],
                           ['📩Добавиться в комнату', '↩️Назад']]
     else:
-        reply_keyboard = [['🖍Добавить комнату', '🚪Войти в комнату'],
+        reply_keyboard = [['🖍Создать комнату', '🚪Войти в комнату'],
                           ['📩Добавиться в комнату', '↩️Назад']]
     markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True)
     update.message.reply_text(text, parse_mode=ParseMode.HTML, reply_markup=markup)
@@ -187,7 +184,7 @@ def show_room(update, context, num=None, refresh=True):  # Function to show user
     current_room[curr_id] = int(num) - 1
     room = current_rooms[curr_id][current_room[curr_id]]['Room']
     name = room.get('name')
-    text = f'🗃Комната \"{name}\":\n'
+    text = f'🗃Комната \"{name}\" ({room["users_count"]}/{config.ROOM_USER_LIMIT} пользователей):\n'
     update.message.reply_text('👾Открываю список изображений...')
     if refresh:
         images = room.get('images')
@@ -233,7 +230,7 @@ def rooms(update, context):
 
 def command_rooms(update, context):  # 1st in Covnersation
     command = update.message.text
-    if command == '🖍Добавить комнату':
+    if command == '🖍Создать комнату':
         update.message.reply_text('📝Введите название комнаты:', reply_markup=ReplyKeyboardRemove())
         return 2
     elif command == '🚪Войти в комнату':
@@ -245,7 +242,7 @@ def command_rooms(update, context):  # 1st in Covnersation
                 username = session.query(User).filter(User.chat_id == chat_id).first().name + ', '
             except:
                 logging.warning(f'Unregistered user entered dialog. Chat_id: {chat_id}')
-            update.message.reply_text(f'😿Извини, {username}я тебя не понял.\n\nНапиши /help, если тебе нужна помощь!')
+            update.message.reply_text(f'😿Извините, {username}я вас не понял.\n\nНапишите /help, если тебе нужна помощь!')
             return home(update, context)
         reply_keyboard = []
         rooms_count = len(current_rooms[update.message.chat_id])
@@ -282,7 +279,7 @@ def command_rooms(update, context):  # 1st in Covnersation
             username = session.query(User).filter(User.chat_id == chat_id).first().name + ', '
         except:
             logging.warning(f'Unregistered user entered dialog. Chat_id: {chat_id}')
-        update.message.reply_text(f'😿Извини, {username}я тебя не понял.\n\nНапиши /help, если тебе нужна помощь!')
+        update.message.reply_text(f'😿Извините, {username}я вас не понял.\n\nНапишите /help, если тебе нужна помощь!')
         return home(update, context)
 
 
@@ -323,17 +320,16 @@ def room(update, context):  # 3rd in Conversation
 
 
 def add_user_to_room(update, context):  # 4th in Conversation
-    rid = ''
-    name = ''
-    if update.message.text == '↩️Назад':
+    link = update.message.text
+    if link == '↩️Назад':
         return show_rooms(update, context)
     try:
-        rid, name = update.message.text.split('*')
+        rid, word = update.message.text.split('*')
         rid = int(rid)
     except Exception as e:
         reply_keyboard = [['↩️Назад']]
         markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True)
-        update.message.reply_text('Введите корректный код!', reply_markup=markup)
+        update.message.reply_text('Хм, кажется, код не подходит, попробуйте другой!', reply_markup=markup)
         return 4
     session = db_session.create_session()
     userid = session.query(User).filter(User.chat_id == update.message.chat_id).first().mainid
@@ -348,10 +344,10 @@ def add_user_to_room(update, context):  # 4th in Conversation
             logging.fatal(f'Server is unreachable!')
             update.message.reply_text('😿Сервер недоступен.\n\nСвязь с разработчиками: @sultanowskii, @gabidullin_kamil')
             return home(update, context)
-    if response.get('error') or response.get('Room')['name'] != name:
+    if response.get('error') or response.get('Room')['link'] != link:
         reply_keyboard = [['↩️Назад']]
         markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True)
-        update.message.reply_text("Введите корректный код!", reply_markup=markup)
+        update.message.reply_text('Хм, кажется, код не подходит, попробуйте другой!', reply_markup=markup)
         return 4
     response = None
     for k in range(3):
@@ -379,7 +375,7 @@ def add_user_to_room(update, context):  # 4th in Conversation
         update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
                                   'скоро все наладится!')
         return home(update, context)
-    update.message.reply_text(f'✅Вы были успешно добавлены в комнату \"{name}\"')
+    update.message.reply_text(f'✅Вы были успешно добавлены в комнату!')
     return show_rooms(update, context)
 
 
@@ -395,11 +391,9 @@ def command_room(update, context):  # 5th in Conversation
         return 6
     elif command == '📣Пригласить людей':
         room = current_rooms[userid][current_room[userid]]['Room']
-        rid = room.get('id')
-        name = room.get('name')
-        code = f'{rid}*{name}'
+        link = room['link']
         update.message.reply_text(f'📝Ваш друг должен ввести этот код: \n'
-                                  f'<code>{code}</code>\nво вкладке "Добавиться в комнату"', parse_mode=ParseMode.HTML)
+                                  f'<code>{link}</code>\nво вкладке "Добавиться в комнату"', parse_mode=ParseMode.HTML)
         return show_room(update, context, num=current_room[userid], refresh=False)
     elif command == '🌄Открыть изображение':
         global current_images
@@ -441,7 +435,7 @@ def command_room(update, context):  # 5th in Conversation
             username = session.query(User).filter(User.chat_id == chat_id).first().name + ', '
         except:
             logging.warning(f'Unregistered user entered dialog. Chat_id: {chat_id}')
-        update.message.reply_text(f'😿Извини, {username}я тебя не понял.\n\nНапиши /help, если тебе нужна помощь!')
+        update.message.reply_text(f'😿Извините, {username}я вас не понял.\n\nНапишите /help, если вам нужна помощь!')
         return home(update, context)
 
 
@@ -515,7 +509,7 @@ def command_image(update, context):  # 8th in Conversation
             username = session.query(User).filter(User.chat_id == chat_id).first().name + ', '
         except:
             logging.warning(f'Unregistered user entered dialog. Chat_id: {chat_id}')
-        update.message.reply_text(f'😿Извини, {username}я тебя не понял.\n\nНапиши /help, если тебе нужна помощь!')
+        update.message.reply_text(f'😿Извините, {username}я вас не понял.\n\nНапишите /help, если вам нужна помощь!')
         return home(update, context)
 
 
@@ -617,7 +611,7 @@ def change_the_name_of_the_photo(update, context):  # 11 in Conversation
         update.message.reply_text('😿Произошла ошибка на сервере.\nРекомендуем вам подождать немного, '
                                   'скоро все наладится!')
         return home(update, context)
-    update.message.reply_text(f'✅Вы были успешно поменяли название изображения. Новое название: \"{new_name}\"')
+    update.message.reply_text(f'✅Вы успешно поменяли название изображения. Новое название: \"{new_name}\"')
     return show_room(update, context, num=current_room[update.message.chat_id])
 
 
@@ -769,7 +763,7 @@ def save_image_to_room(update, context):  # 2nd in Conversation
             return home(update, context)
         update.message.reply_text('👾Открываю список комнат...')
         rooms = user['User'].get('rooms')
-        text = '<b>🔢Выберите комнату (здесь показаны только подходящие комнаты)</b>:\n'
+        text = '<b>🔢Выберите комнату (здесь показаны только те комнаты, в которых есть место)</b>:\n'
         current_rooms[update.message.chat_id] = []
         cnt = 1
         for i in range(len(rooms)):
@@ -800,8 +794,8 @@ def save_image_to_room(update, context):  # 2nd in Conversation
                 update.message.reply_text("🙅‍♂Простите, нет доступных комнат. Давайте создадим новую! Введите название:")
                 return 4
             else:
-                update.message.reply_text("🙅‍♂Простите, мы не можем создать еще одну комнату, так как у вас уже есть"
-                                          "максимальное количество созданных комнат.")
+                update.message.reply_text("🙅‍♂Простите, я не могу создать еще одну комнату, так как у вас их слишком "
+                                          "много.")
                 return home(update, context)
         else:
             cnt = cnt - 1
@@ -922,7 +916,7 @@ def add_room_with_image(update, context):  # 4th in Conversation
         update.message.reply_text('✅Комната успешно создана, фото добавлено!')
         update.message.reply_text('🔠Введите название изображения')
         rid = room['id']
-        logging.info(f'Added new image with ID {lii} to room with id {rid}')
+        logging.info(f'Added new image with ID {lii} to room with ID {rid}')
         return 5
 
 
@@ -987,7 +981,7 @@ def continue_editing_photo(update, context):
             username = session.query(User).filter(User.chat_id == chat_id).first().name + ', '
         except:
             logging.warning(f'Unregistered user entered dialog. Chat_id: {chat_id}')
-        update.message.reply_text(f'😿Извини, {username}я тебя не понял.\n\nНапиши /help, если тебе нужна помощь!')
+        update.message.reply_text(f'😿Извините, {username}я вас не понял.\n\nНапишите /help, если вам нужна помощь!')
         return home(update, context)
 
 

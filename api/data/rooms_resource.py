@@ -1,14 +1,12 @@
-from .rooms import Room
-from .users import User
-from . import db_session
 from . import rooms_parser
+from . import db_session
 from .aborts import abort_if_user_is_full_of_rooms, abort_if_room_is_full_of_users, abort_if_room_not_found
 from .aborts import abort_if_user_not_found
-import config
-
-import logging
 from flask import jsonify
 from flask_restful import Resource, abort
+import logging
+from .rooms import Room
+from .users import User
 
 parser = rooms_parser.parser
 
@@ -30,7 +28,8 @@ class RoomsResource(Resource):
             users_list.append(user.id)
         for image in room.images:
             image_list.append(image.id)
-        return jsonify({'Room': {'name': room.name, 'users': users_list, 'images': image_list, 'id': room_id}})
+        return jsonify({'Room': {'name': room.name, 'users': users_list, 'images': image_list, 'id': room_id,
+                                 'users_count': len(room.users), 'link': room.link}})
 
     def delete(self, room_id):
         abort_if_room_not_found(room_id)
@@ -98,4 +97,8 @@ class RoomsListResource(Resource):
                 room.users.append(user)
         session.add(room)
         session.commit()
+
+        room.generate_link()
+        session.commit()
+
         return jsonify({'success': 'OK', 'id': room.id})
