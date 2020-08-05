@@ -29,7 +29,7 @@ class RoomsResource(Resource):
         for image in room.images:
             image_list.append(image.id)
         return jsonify({'Room': {'name': room.name, 'users': users_list, 'images': image_list, 'id': room_id,
-                                 'users_count': len(room.users), 'link': room.link}})
+                                 'users_count': len(room.users), 'link': room.link, 'images_count': len(room.images)}})
 
     def delete(self, room_id):
         abort_if_room_not_found(room_id)
