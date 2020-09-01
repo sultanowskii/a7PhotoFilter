@@ -184,8 +184,8 @@ def show_room(update, context, num=None, refresh=True):  # Function to show user
     current_room[curr_id] = int(num) - 1
     room = current_rooms[curr_id][current_room[curr_id]]['Room']
     name = room.get('name')
-    text = f'🗃<b>Комната \"{name}\" (Пользователей: {room["users_count"]}/{config.ROOM_USER_LIMIT}, Изображений</b>:'\
-        f' {room["images_count"]}/{config.ROOM_IMAGE_LIMIT}):\n'
+    text = f'🗃<b>Комната \"{name}\" (Пользователей: {room["users_count"]}/{config.ROOM_USER_LIMIT}, Изображений:'\
+        f' {room["images_count"]}/{config.ROOM_IMAGE_LIMIT})</b>:\n'
     update.message.reply_text('👾Открываю список изображений...')
     if refresh:
         images = room.get('images')
@@ -484,7 +484,7 @@ def image(update, context):  # 7th in Conversation
                       ['↩️Назад']]
     markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True)
     updater.bot.sendPhoto(update.message.chat_id, BytesIO(file))
-    update.message.reply_text(f'🌆<b>Изображение \"{name}\"</b>', reply_markup=markup)
+    update.message.reply_text(f'🌆<b>Изображение \"{name}\"</b>', reply_markup=markup, parse_mode=ParseMode.HTML)
     return 8
 
 
